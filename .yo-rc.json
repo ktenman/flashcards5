@@ -8,7 +8,7 @@
     "baseName": "flashcards",
     "packageName": "ee.tenman.flashcards",
     "packageFolder": "ee/tenman/flashcards",
-    "serverPort": "8080",
+    "serverPort": "80",
     "authenticationType": "jwt",
     "cacheProvider": "ehcache",
     "enableHibernateCache": true,
