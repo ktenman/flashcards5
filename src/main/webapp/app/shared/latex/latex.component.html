@@ -1,5 +1,5 @@
-<span *ngFor="let part of splitParagraph(paragraph)"
-    [ngSwitch]="classify(part)">
+<span *ngFor="let part of splitParagraph(equation)"
+      [ngSwitch]="classify(part)">
 
 <ng-katex *ngSwitchCase="DISPLAY_MODE"
           [equation]="clean(part)" [options]="options"></ng-katex>

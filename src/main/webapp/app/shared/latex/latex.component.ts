@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core'
+import {Component, EventEmitter, Input, Output} from '@angular/core'
 import {KatexOptions} from 'ng-katex'
 
 @Component({
@@ -6,49 +6,42 @@ import {KatexOptions} from 'ng-katex'
     templateUrl: './latex.component.html',
     styles: []
 })
-export class JhiLatexComponent implements OnInit {
+export class JhiLatexComponent {
 
-    private readonly DISPLAY_MODE: number = 1;
-    private readonly INLINE_MODE: number = 2;
-
-
-    private readonly splitRe = /(\$(?:\\\$|[^\$])+\$)|(\$\$(?:\\\$|[^\$])+\$\$)/g;
-
-    private readonly matchDisplayRe = /(?:\$\$((?:\\\$|[^\$])+)\$\$)/;
-    private readonly matchInlineRe = /(?:\$((?:\\\$|[^\$])+)\$)/;
-
+    readonly DISPLAY_MODE: number = 1
+    readonly INLINE_MODE: number = 2
+    private readonly splitRe = /(\$(?:\\\$|[^\$])+\$)|(\$\$(?:\\\$|[^\$])+\$\$)/g
+    private readonly matchDisplayRe = /(?:\$\$((?:\\\$|[^\$])+)\$\$)/
+    private readonly matchInlineRe = /(?:\$((?:\\\$|[^\$])+)\$)/
     private readonly cleanRe = /(\${1,2})((?:\\\$|[^\$])+)\1/
 
-
-    private readonly options: KatexOptions = {
+    readonly options: KatexOptions = {
         displayMode: true
-    };
+    }
 
-    @Input() paragraph: string;
-    @Output() onError = new EventEmitter<any>();
+    @Input() equation: string
+    @Output() onError = new EventEmitter<any>()
 
     hasError(error) {
-        this.onError.emit(error);
+        this.onError.emit(error)
     }
 
     splitParagraph(paragraph: string): Array<string> {
-        return paragraph.split(this.splitRe).filter(x => x)
+        return paragraph.split(this.splitRe).filter((x) => x)
     }
 
-    private classify(s: string): number {
+    classify(s: string): number {
         if (s.match(this.matchDisplayRe)) {
-            return 1;
+            return 1
         } else if (s.match(this.matchInlineRe)) {
-            return 2;
+            return 2
         } else {
-            return 0;
+            return 0
         }
     }
 
-    private clean(s: string): string {
-        return s.match(this.cleanRe)[2];
+    clean(s: string): string {
+        return s.match(this.cleanRe)[2]
     }
-
-    ngOnInit(): void {}
 
 }
