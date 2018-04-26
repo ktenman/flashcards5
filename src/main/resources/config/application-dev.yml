@@ -57,6 +57,10 @@ spring:
         cache-seconds: 1
     thymeleaf:
         cache: false
+    social:
+        google:
+            client-id: 1000639744250-30r6hls0sgm5caof9bf36q7o6s90nvhr.apps.googleusercontent.com
+            client-secret: 9z5e7DLroCctSOENZHVWCmOY
 
 liquibase:
     contexts: dev
