@@ -1,32 +1,36 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { DatePipe } from '@angular/common';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core'
+import {DatePipe} from '@angular/common'
 
 import {
-    FlashcardsSharedLibsModule,
-    FlashcardsSharedCommonModule,
-    CSRFService,
-    AuthServerProvider,
     AccountService,
-    UserService,
-    StateStorageService,
-    LoginService,
-    LoginModalService,
-    JhiLoginModalComponent,
-    Principal,
+    AuthServerProvider,
+    CSRFService,
+    FlashcardsSharedCommonModule,
+    FlashcardsSharedLibsModule,
     HasAnyAuthorityDirective,
+    JhiLatexComponent,
+    JhiLoginModalComponent,
     JhiSocialComponent,
+    LoginModalService,
+    LoginService,
+    Principal,
     SocialService,
-} from './';
+    StateStorageService,
+    UserService
+} from './'
+import {KatexModule} from 'ng-katex'
 
 @NgModule({
     imports: [
         FlashcardsSharedLibsModule,
-        FlashcardsSharedCommonModule
+        FlashcardsSharedCommonModule,
+        KatexModule,
     ],
     declarations: [
         JhiSocialComponent,
         JhiLoginModalComponent,
-        HasAnyAuthorityDirective
+        HasAnyAuthorityDirective,
+        JhiLatexComponent,
     ],
     providers: [
         LoginService,
@@ -46,7 +50,8 @@ import {
         JhiSocialComponent,
         JhiLoginModalComponent,
         HasAnyAuthorityDirective,
-        DatePipe
+        DatePipe,
+        JhiLatexComponent,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 

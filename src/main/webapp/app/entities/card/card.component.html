@@ -29,7 +29,7 @@
             <tr *ngFor="let card of cards ;trackBy: trackId">
                 <td><a [routerLink]="['../card', card.id ]">{{card.id}}</a></td>
                 <td>{{card.front}}</td>
-                <td>{{card.back}}</td>
+                <td><jhi-latex [paragraph]="card.back"></jhi-latex></td>
                 <td>{{card.known}}</td>
                 <td>{{card.enabled}}</td>
                 <td>
