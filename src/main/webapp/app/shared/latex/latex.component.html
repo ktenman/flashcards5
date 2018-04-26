@@ -7,6 +7,6 @@
 <ng-katex *ngSwitchCase="INLINE_MODE"
           [equation]="clean(part)"></ng-katex>
 
-<span *ngSwitchDefault>{{ part }}</span>
+<span *ngSwitchDefault [innerHTML]="part | replaceLineBreaks"></span>
 
 </span>

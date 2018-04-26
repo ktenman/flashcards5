@@ -25,4 +25,5 @@ export * from './social/social.service';
 export * from './social/social.component';
 export * from './shared-libs.module';
 export * from './shared-common.module';
+export * from './replace-line-breaks.pipe';
 export * from './shared.module';

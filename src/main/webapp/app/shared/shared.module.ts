@@ -14,6 +14,7 @@ import {
     LoginModalService,
     LoginService,
     Principal,
+    ReplaceLineBreaksPipe,
     SocialService,
     StateStorageService,
     UserService
@@ -31,6 +32,7 @@ import {KatexModule} from 'ng-katex'
         JhiLoginModalComponent,
         HasAnyAuthorityDirective,
         JhiLatexComponent,
+        ReplaceLineBreaksPipe,
     ],
     providers: [
         LoginService,
