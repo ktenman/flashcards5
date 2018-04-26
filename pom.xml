@@ -359,6 +359,11 @@
             <artifactId>cucumber-spring</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.simpleflatmapper</groupId>
+            <artifactId>sfm-csv</artifactId>
+            <version>3.11.6</version>
+        </dependency>
         <!-- jhipster-needle-maven-add-dependency -->
     </dependencies>
 

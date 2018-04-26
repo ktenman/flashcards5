@@ -4,10 +4,9 @@ import ee.tenman.flashcards.FlashcardsApp;
 import ee.tenman.flashcards.domain.Authority;
 import ee.tenman.flashcards.domain.User;
 import ee.tenman.flashcards.repository.AuthorityRepository;
+import ee.tenman.flashcards.repository.CardRepository;
 import ee.tenman.flashcards.repository.UserRepository;
 import ee.tenman.flashcards.security.AuthoritiesConstants;
-import ee.tenman.flashcards.service.MailService;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -41,6 +40,9 @@ public class SocialServiceIntTest {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private CardRepository cardRepository;
+
     @Mock
     private MailService mockMailService;
 
@@ -60,7 +62,7 @@ public class SocialServiceIntTest {
         when(mockUsersConnectionRepository.createConnectionRepository(anyString())).thenReturn(mockConnectionRepository);
 
         socialService = new SocialService(mockUsersConnectionRepository, authorityRepository,
-                passwordEncoder, userRepository, mockMailService);
+                passwordEncoder, userRepository, mockMailService, cardRepository);
     }
 
     @Test
@@ -233,7 +235,7 @@ public class SocialServiceIntTest {
 
         //Verify
         User user = userRepository.findOneByEmailIgnoreCase("mail@mail.com").get();
-        assertThat(user.getLogin()).isEqualTo("first_name_last_name");
+        assertThat(user.getLogin()).isEqualTo("mail@mail.com");
 
         // Teardown
         userRepository.delete(user);
@@ -254,7 +256,7 @@ public class SocialServiceIntTest {
 
         //Verify
         User user = userRepository.findOneByEmailIgnoreCase("mail@mail.com").get();
-        assertThat(user.getLogin()).isEqualToIgnoringCase("login");
+        assertThat(user.getLogin()).isEqualToIgnoringCase("mail@mail.com");
 
         // Teardown
         userRepository.delete(user);

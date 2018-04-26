@@ -1,13 +1,15 @@
 package ee.tenman.flashcards.service;
 
 import ee.tenman.flashcards.domain.Authority;
+import ee.tenman.flashcards.domain.Card;
 import ee.tenman.flashcards.domain.User;
 import ee.tenman.flashcards.repository.AuthorityRepository;
+import ee.tenman.flashcards.repository.CardRepository;
 import ee.tenman.flashcards.repository.UserRepository;
 import ee.tenman.flashcards.security.AuthoritiesConstants;
-
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.simpleflatmapper.csv.CsvParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -17,6 +19,10 @@ import org.springframework.social.connect.UserProfile;
 import org.springframework.social.connect.UsersConnectionRepository;
 import org.springframework.stereotype.Service;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Optional;
@@ -37,15 +43,18 @@ public class SocialService {
 
     private final MailService mailService;
 
+    private final CardRepository cardRepository;
+
     public SocialService(UsersConnectionRepository usersConnectionRepository, AuthorityRepository authorityRepository,
-            PasswordEncoder passwordEncoder, UserRepository userRepository,
-            MailService mailService) {
+                         PasswordEncoder passwordEncoder, UserRepository userRepository,
+                         MailService mailService, CardRepository cardRepository) {
 
         this.usersConnectionRepository = usersConnectionRepository;
         this.authorityRepository = authorityRepository;
         this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
         this.mailService = mailService;
+        this.cardRepository = cardRepository;
     }
 
     public void deleteUserSocialConnection(String login) {
@@ -108,7 +117,37 @@ public class SocialService {
         newUser.setLangKey(langKey);
         newUser.setImageUrl(imageUrl);
 
-        return userRepository.save(newUser);
+        User user = userRepository.save(newUser);
+
+        saveDefaultCards(user);
+
+        return user;
+    }
+
+    private void saveDefaultCards(User user) {
+        try {
+            InputStream inputStream =
+                getClass().getClassLoader().getResourceAsStream("flashcards.csv");
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream ));
+            CsvParser
+                .separator(';')
+                .stream(reader)
+                .forEach((String[] s) -> {
+                    Card card = new Card();
+                    try{
+                        card.setFront(s[0]);
+                        card.setBack(s[1]);
+                        card.setUser(user);
+                        card.setKnown(false);
+                        card.setEnabled(false);
+                        cardRepository.save(card);
+                    } catch(ArrayIndexOutOfBoundsException e){
+                        throw new ArrayIndexOutOfBoundsException("Wrong array {}" + e);
+                    }
+                });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
