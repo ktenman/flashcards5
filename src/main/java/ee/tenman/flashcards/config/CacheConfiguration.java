@@ -43,6 +43,7 @@ public class CacheConfiguration {
             cm.createCache(ee.tenman.flashcards.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(ee.tenman.flashcards.domain.User.class.getName() + ".authorities", jcacheConfiguration);
             cm.createCache(ee.tenman.flashcards.domain.SocialUserConnection.class.getName(), jcacheConfiguration);
+            cm.createCache(ee.tenman.flashcards.domain.Card.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

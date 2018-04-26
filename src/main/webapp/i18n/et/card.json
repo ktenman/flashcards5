@@ -1,0 +1,26 @@
+
+{
+    "flashcardsApp": {
+        "card" : {
+            "home": {
+                "title": "Cards",
+                "createLabel": "Lisa uus Card",
+                "createOrEditLabel": "Lisa või muuda Card"
+            },
+            "created": "Uus Card on loodud identifikaatoriga {{ param }}",
+            "updated": "Card identifikaatoriga {{ param }} on muudetud",
+            "deleted": "Card identifikaatoriga {{ param }} on kustutatud",
+            "delete": {
+                "question": "Kas olete kindel, et soovite kustutada Card {{ id }}?"
+            },
+            "detail": {
+                "title": "Card"
+            },
+            "front": "Front",
+            "back": "Back",
+            "known": "Known",
+            "enabled": "Enabled",
+            "user": "User"
+        }
+    }
+}

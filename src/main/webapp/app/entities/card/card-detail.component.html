@@ -1,0 +1,42 @@
+
+<div *ngIf="card">
+    <h2><span jhiTranslate="flashcardsApp.card.detail.title">Card</span> {{card.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="flashcardsApp.card.front">Front</span></dt>
+        <dd>
+            <span>{{card.front}}</span>
+        </dd>
+        <dt><span jhiTranslate="flashcardsApp.card.back">Back</span></dt>
+        <dd>
+            <span>{{card.back}}</span>
+        </dd>
+        <dt><span jhiTranslate="flashcardsApp.card.known">Known</span></dt>
+        <dd>
+            <span>{{card.known}}</span>
+        </dd>
+        <dt><span jhiTranslate="flashcardsApp.card.enabled">Enabled</span></dt>
+        <dd>
+            <span>{{card.enabled}}</span>
+        </dd>
+        <dt><span jhiTranslate="flashcardsApp.card.user">User</span></dt>
+        <dd>
+            {{card.userLogin}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'card/'+ card.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>
