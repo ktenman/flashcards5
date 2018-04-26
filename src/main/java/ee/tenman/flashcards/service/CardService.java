@@ -11,7 +11,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
 /**
  * Service Implementation for managing Card.
  */
@@ -52,8 +51,7 @@ public class CardService {
     @Transactional(readOnly = true)
     public Page<CardDTO> findAll(Pageable pageable) {
         log.debug("Request to get all Cards");
-        return cardRepository.findAll(pageable)
-            .map(cardMapper::toDto);
+        return cardRepository.findByUserIsCurrentUser(pageable).map(cardMapper::toDto);
     }
 
     /**

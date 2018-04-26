@@ -1,9 +1,12 @@
 package ee.tenman.flashcards.repository;
 
 import ee.tenman.flashcards.domain.Card;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import org.springframework.data.jpa.repository.*;
 import java.util.List;
 
 /**
@@ -15,5 +18,8 @@ public interface CardRepository extends JpaRepository<Card, Long> {
 
     @Query("select card from Card card where card.user.login = ?#{principal.username}")
     List<Card> findByUserIsCurrentUser();
+
+    @Query("select card from Card card where card.user.login = ?#{principal.username}")
+    Page<Card> findByUserIsCurrentUser(Pageable pageable);
 
 }
