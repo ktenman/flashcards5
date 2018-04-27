@@ -1,4 +1,4 @@
-import { BaseEntity } from './../../shared';
+import {BaseEntity} from './../../shared'
 
 export class Card implements BaseEntity {
     constructor(
@@ -11,6 +11,6 @@ export class Card implements BaseEntity {
         public userId?: number,
     ) {
         this.known = false;
-        this.enabled = false;
+        this.enabled = true;
     }
 }
