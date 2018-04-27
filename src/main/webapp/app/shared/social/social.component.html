@@ -1,5 +1,5 @@
 <form ngNoForm action="{{ providerURL }}" method="POST">
-    <button type="submit" class="btn btn-block jh-btn-social jh-btn-{{ provider }}">
+    <button type="submit" #continueSocialLoginButton class="btn btn-block jh-btn-social jh-btn-{{ provider }}">
         <span jhiTranslate="social.btnLabel" translateValues="{ label: '{{label}}' }">Sign in with {{ label }}</span>
     </button>
     <input name="scope" type="hidden" value="{{ providerSetting }}"/>

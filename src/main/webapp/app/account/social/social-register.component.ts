@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core'
+import {ActivatedRoute} from '@angular/router'
+import {NgbModalRef} from '@ng-bootstrap/ng-bootstrap'
 
-import { LoginModalService } from '../../shared';
+import {LoginModalService} from '../../shared'
 
 @Component({
     selector: 'jhi-register',
     templateUrl: './social-register.component.html'
 })
 export class SocialRegisterComponent implements OnInit  {
+    @ViewChild('continueSocialLoginButton') continueSocialLoginButton:ElementRef;
     success: boolean;
     error: boolean;
     provider: string;
@@ -24,6 +25,11 @@ export class SocialRegisterComponent implements OnInit  {
     ngOnInit() {
         this.route.queryParams.subscribe((queryParams) => {
             this.success = queryParams['success'];
+            if (this.success) {
+                setTimeout(() => {
+                    this.continueSocialLoginButton.nativeElement.click()
+                }, 2000)
+            }
         });
         this.route.params.subscribe((params) => {
             this.provider = params['provider?{success:boolean}'];
