@@ -3,11 +3,11 @@
         "title": "Flashcards",
         "browsehappy": "Te kasutate <strong>vananenud</strong> veebilehitsejat. Kasutuskogemuse parandamiseks palun <a href=\"http://browsehappy.com/?locale=et\">uuendage oma veebilehitsejat</a>.",
         "menu": {
-            "home": "Avaleht",
+            "home": "Õpi",
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Olemid",
-                "card": "Card",
+                "card": "Kaardid",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
