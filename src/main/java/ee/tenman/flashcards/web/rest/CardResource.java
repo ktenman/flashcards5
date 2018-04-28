@@ -2,10 +2,10 @@ package ee.tenman.flashcards.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import ee.tenman.flashcards.service.CardService;
+import ee.tenman.flashcards.service.dto.CardDTO;
 import ee.tenman.flashcards.web.rest.errors.BadRequestAlertException;
 import ee.tenman.flashcards.web.rest.util.HeaderUtil;
 import ee.tenman.flashcards.web.rest.util.PaginationUtil;
-import ee.tenman.flashcards.service.dto.CardDTO;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,9 +19,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
-
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 /**
  * REST controller for managing Card.
@@ -123,5 +123,18 @@ public class CardResource {
         log.debug("REST request to delete Card : {}", id);
         cardService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
+    }
+
+    @GetMapping("/get-random-card")
+    public ResponseEntity<CardDTO> getRandomCard() {
+        log.debug("REST request to get random Card");
+        List<CardDTO> cards = cardService.findAll();
+        CardDTO cardDTO = null;
+        if (cards != null && !cards.isEmpty()) {
+            Random random = new Random();
+            int index = random.nextInt(cards.size());
+            cardDTO = cards.get(index);
+        }
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(cardDTO));
     }
 }
