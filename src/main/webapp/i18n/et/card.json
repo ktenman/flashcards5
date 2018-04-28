@@ -3,23 +3,23 @@
     "flashcardsApp": {
         "card" : {
             "home": {
-                "title": "Cards",
-                "createLabel": "Lisa uus Card",
-                "createOrEditLabel": "Lisa või muuda Card"
+                "title": "Kaardid",
+                "createLabel": "Lisa uus kaart",
+                "createOrEditLabel": "Lisa või muuda kaart"
             },
-            "created": "Uus Card on loodud identifikaatoriga {{ param }}",
-            "updated": "Card identifikaatoriga {{ param }} on muudetud",
-            "deleted": "Card identifikaatoriga {{ param }} on kustutatud",
+            "created": "Uus kaart on loodud #{{ param }}",
+            "updated": "Kaard #{{ param }} on muudetud",
+            "deleted": "Card #{{ param }} on kustutatud",
             "delete": {
-                "question": "Kas olete kindel, et soovite kustutada Card {{ id }}?"
+                "question": "Kas oled kindel, et soovid kustutada kaarti #{{ id }}?"
             },
             "detail": {
-                "title": "Card"
+                "title": "Kaart"
             },
-            "front": "Front",
-            "back": "Back",
-            "known": "Known",
-            "enabled": "Enabled",
+            "front": "Esikülg",
+            "back": "Tagakülg",
+            "known": "Selge",
+            "enabled": "Aktiivne",
             "user": "User"
         }
     }
