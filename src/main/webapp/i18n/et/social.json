@@ -1,6 +1,6 @@
 {
     "social": {
-        "btnLabel": "Logige sisse {{ label }} kaudu",
+        "btnLabel": "{{ label }}",
         "register": {
             "title": "Registreeruge {{ label }} kaudu",
             "errorTitle": "Registreerumine välise kontoga",

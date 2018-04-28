@@ -32,8 +32,9 @@ export class HomeComponent implements OnInit {
 
     registerAuthenticationSuccess() {
         this.eventManager.subscribe('authenticationSuccess', (message) => {
-            this.principal.identity().then((account) => {
+            this.principal.identity().then((account: Account) => {
                 this.account = account
+                this.eventManager.broadcast({name: 'userName', content: `${account.login}`})
             })
         })
     }

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core'
 import {Router} from '@angular/router'
 import {NgbModalRef} from '@ng-bootstrap/ng-bootstrap'
-import {JhiLanguageService} from 'ng-jhipster'
+import {JhiEventManager, JhiLanguageService} from 'ng-jhipster'
 
 import {ProfileService} from '../profiles/profile.service'
 import {JhiLanguageHelper, LoginModalService, LoginService, Principal} from '../../shared'
@@ -22,6 +22,7 @@ export class NavbarComponent implements OnInit {
     swaggerEnabled: boolean
     modalRef: NgbModalRef
     version: string
+    userName: string
 
     constructor(
         private loginService: LoginService,
@@ -30,7 +31,8 @@ export class NavbarComponent implements OnInit {
         private principal: Principal,
         private loginModalService: LoginModalService,
         private profileService: ProfileService,
-        private router: Router
+        private router: Router,
+        private eventManager: JhiEventManager
     ) {
         this.version = VERSION ? 'v' + VERSION : ''
         this.isNavbarCollapsed = true
@@ -44,6 +46,11 @@ export class NavbarComponent implements OnInit {
         this.profileService.getProfileInfo().then((profileInfo) => {
             this.inProduction = profileInfo.inProduction
             this.swaggerEnabled = profileInfo.swaggerEnabled
+        })
+
+        this.eventManager.subscribe('userName', (response) => {
+            console.log(response)
+            this.userName = response.content
         })
     }
 
