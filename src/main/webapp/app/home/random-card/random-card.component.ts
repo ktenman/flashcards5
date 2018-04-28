@@ -13,6 +13,7 @@ import {RandomCardService} from './random-card.service'
 export class JhiRandomCardComponent implements OnInit {
 
     card: Card
+    cachedNextCard: Card
 
     constructor(private randomCardService: RandomCardService) {
     }
@@ -21,6 +22,19 @@ export class JhiRandomCardComponent implements OnInit {
         this.randomCardService.get()
             .subscribe((cardResponse: HttpResponse<Card>) => {
                 this.card = cardResponse.body
+            })
+        this.cacheNextCard()
+    }
+
+    public next() {
+        this.card = this.cachedNextCard
+        this.cacheNextCard()
+    }
+
+    public cacheNextCard() {
+        this.randomCardService.get()
+            .subscribe((cardResponse: HttpResponse<Card>) => {
+                this.cachedNextCard = cardResponse.body
             })
     }
 
