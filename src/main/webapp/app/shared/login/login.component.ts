@@ -1,26 +1,29 @@
-import {AfterViewInit, Component, ElementRef, Renderer} from '@angular/core'
+import {AfterViewInit, Component, ElementRef, OnInit, Renderer} from '@angular/core'
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap'
 import {Router} from '@angular/router'
 import {JhiEventManager} from 'ng-jhipster'
 
 import {LoginService} from './login.service'
 import {StateStorageService} from '../auth/state-storage.service'
+import {ProfileService} from '../../layouts/profiles/profile.service'
 
 @Component({
     selector: 'jhi-login-modal',
     templateUrl: './login.component.html'
 })
-export class JhiLoginModalComponent implements AfterViewInit {
+export class JhiLoginModalComponent implements AfterViewInit, OnInit {
     authenticationError: boolean
     password: string
     rememberMe: boolean
     username: string
     credentials: any
+    inProduction: boolean
 
     constructor(
         private eventManager: JhiEventManager,
         private loginService: LoginService,
         private stateStorageService: StateStorageService,
+        private profileService: ProfileService,
         private elementRef: ElementRef,
         private renderer: Renderer,
         private router: Router,
@@ -81,5 +84,11 @@ export class JhiLoginModalComponent implements AfterViewInit {
     requestResetPassword() {
         this.activeModal.dismiss('to state requestReset')
         this.router.navigate(['/reset', 'request'])
+    }
+
+    ngOnInit(): void {
+        this.profileService.getProfileInfo().then((profileInfo) => {
+            this.inProduction = profileInfo.inProduction
+        })
     }
 }
