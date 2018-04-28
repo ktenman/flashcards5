@@ -4,8 +4,8 @@ import {RouterModule} from '@angular/router'
 import {FlashcardsSharedModule} from '../shared'
 
 import {HOME_ROUTE, HomeComponent} from './'
-import {JhiRandomCardComponent} from '../layouts'
-import {RandomCardService} from '../layouts/random-card/random-card.service'
+import {JhiRandomCardComponent} from './random-card/random-card.component'
+import {RandomCardService} from './random-card/random-card.service'
 
 @NgModule({
     imports: [
