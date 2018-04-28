@@ -43,7 +43,7 @@ export class CardService {
         return this.http.delete<any>(`${this.resourceUrl}/${id}`, {observe: 'response'})
     }
 
-    private convertResponse(res: EntityResponseType): EntityResponseType {
+    public convertResponse(res: EntityResponseType): EntityResponseType {
         const body: Card = this.convertItemFromServer(res.body)
         return res.clone({body})
     }
