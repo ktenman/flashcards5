@@ -4,13 +4,3 @@
 <p>
     <jhi-latex [equation]="card.back"></jhi-latex>
 </p>
-<h2>
-    <span jhiTranslate="flashcardsApp.card.home.title">Cards</span>
-    <button class="btn btn-primary float-right jh-create-entity create-card"
-            [routerLink]="['/', { outlets: { popup: ['card-new'] } }]">
-        <span class="fa fa-plus"></span>
-        <span jhiTranslate="flashcardsApp.card.home.createLabel">
-            Create new Card
-            </span>
-    </button>
-</h2>
