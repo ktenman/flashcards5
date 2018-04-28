@@ -1,6 +1,7 @@
 package ee.tenman.flashcards.service;
 
 import ee.tenman.flashcards.domain.Card;
+import ee.tenman.flashcards.domain.User;
 import ee.tenman.flashcards.repository.CardRepository;
 import ee.tenman.flashcards.service.dto.CardDTO;
 import ee.tenman.flashcards.service.mapper.CardMapper;
@@ -10,6 +11,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Optional;
 
 /**
  * Service Implementation for managing Card.
@@ -24,9 +27,12 @@ public class CardService {
 
     private final CardMapper cardMapper;
 
-    public CardService(CardRepository cardRepository, CardMapper cardMapper) {
+    private final UserService userService;
+
+    public CardService(CardRepository cardRepository, CardMapper cardMapper, UserService userService) {
         this.cardRepository = cardRepository;
         this.cardMapper = cardMapper;
+        this.userService = userService;
     }
 
     /**
@@ -37,6 +43,8 @@ public class CardService {
      */
     public CardDTO save(CardDTO cardDTO) {
         log.debug("Request to save Card : {}", cardDTO);
+        Optional<User> optionalUser = userService.getUserWithAuthorities();
+        optionalUser.ifPresent(user -> cardDTO.setUserId(user.getId()));
         Card card = cardMapper.toEntity(cardDTO);
         card = cardRepository.save(card);
         return cardMapper.toDto(card);
