@@ -1,14 +1,11 @@
 <div class="row">
     <div class="col-md-12">
         <div [ngSwitch]="isAuthenticated()">
-            <div *ngSwitchCase="true">
-                <div class="alert alert-success">
-                <span *ngIf="account" jhiTranslate="home.logged.message"
-                      translateValues="{username: '{{account.login}}'}"> You are logged in as user "{{account.login}}". </span>
 
-                </div>
+            <div *ngSwitchCase="true">
                 <jhi-random-card></jhi-random-card>
             </div>
+
             <div class="row" *ngSwitchCase="false">
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
