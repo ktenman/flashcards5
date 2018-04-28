@@ -16,38 +16,40 @@
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="front"><span jhiTranslate="flashcardsApp.card.front">Front</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="back"><span jhiTranslate="flashcardsApp.card.back">Back</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="known"><span jhiTranslate="flashcardsApp.card.known">Known</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="enabled"><span jhiTranslate="flashcardsApp.card.enabled">Enabled</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="userLogin"><span jhiTranslate="flashcardsApp.card.user">User</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
             <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
             <tr *ngFor="let card of cards ;trackBy: trackId">
-                <td><a [routerLink]="['../card', card.id ]">{{card.id}}</a></td>
                 <td>{{card.front}}</td>
                 <td><jhi-latex [equation]="card.back"></jhi-latex></td>
-                <td>{{card.known}}</td>
-                <td>{{card.enabled}}</td>
-                <td>
-                    {{card.userLogin}}
+                <td class="checkbox d-none d-sm-table-cell pointer" (click)="changeKnown(card, card.known)">
+                    <div class="checkbox pointer">
+                        <input class="pointer" (ngModelChange)="changeKnown(card, card.known)" id="field_known_{{card.id}}" type="checkbox"
+                               name="field_known_{{card.id}}"
+                               [ngModel]="card.known">
+                        <label for="field_known_{{card.id}}"></label>
+                    </div>
+                </td>
+                <td class="checkbox d-none d-sm-table-cell pointer" (click)="changeEnabled(card, card.enabled)">
+                    <div class="checkbox pointer">
+                        <input class="pointer" (ngModelChange)="changeEnabled(card, card.enabled)" id="field_grouping_{{card.id}}" type="checkbox"
+                               name="field_grouping_{{card.id}}"
+                               [ngModel]="card.enabled">
+                        <label for="field_grouping_{{card.id}}"></label>
+                    </div>
                 </td>
                 <td class="text-right">
-                    <div class="btn-group flex-btn-group-container">
-                        <button type="submit"
-                                [routerLink]="['../card', card.id ]"
-                                class="btn btn-info btn-sm">
-                            <span class="fa fa-eye"></span>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-                        </button>
+                    <div class="btn-group-vertical btn-group-toggle">
                         <button type="submit"
                                 [routerLink]="['/', { outlets: { popup: 'card/'+ card.id + '/edit'} }]"
                                 replaceUrl="true"
                                 queryParamsHandling="merge"
-                                class="btn btn-primary btn-sm">
+                                class="btn btn-outline-primary btn-xs">
                             <span class="fa fa-pencil"></span>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
@@ -55,7 +57,7 @@
                                 [routerLink]="['/', { outlets: { popup: 'card/'+ card.id + '/delete'} }]"
                                 replaceUrl="true"
                                 queryParamsHandling="merge"
-                                class="btn btn-danger btn-sm">
+                                class="btn btn-outline-danger btn-xs">
                             <span class="fa fa-remove"></span>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
                         </button>

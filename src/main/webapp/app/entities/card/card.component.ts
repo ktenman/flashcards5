@@ -1,15 +1,19 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
-import { Subscription } from 'rxjs/Subscription';
-import { JhiEventManager, JhiParseLinks, JhiAlertService, JhiDataUtils } from 'ng-jhipster';
+import {Component, OnDestroy, OnInit} from '@angular/core'
+import {HttpErrorResponse, HttpResponse} from '@angular/common/http'
+import {Subscription} from 'rxjs/Subscription'
+import {JhiAlertService, JhiDataUtils, JhiEventManager, JhiParseLinks} from 'ng-jhipster'
 
-import { Card } from './card.model';
-import { CardService } from './card.service';
-import { ITEMS_PER_PAGE, Principal } from '../../shared';
+import {Card} from './card.model'
+import {CardService} from './card.service'
+import {ITEMS_PER_PAGE, Principal} from '../../shared'
+import {Observable} from 'rxjs/Observable'
 
 @Component({
     selector: 'jhi-card',
-    templateUrl: './card.component.html'
+    templateUrl: './card.component.html',
+    styleUrls: [
+        'card.component.scss'
+    ]
 })
 export class CardComponent implements OnInit, OnDestroy {
 
@@ -23,6 +27,7 @@ export class CardComponent implements OnInit, OnDestroy {
     queryCount: any;
     reverse: any;
     totalItems: number;
+    isSaving: boolean;
 
     constructor(
         private cardService: CardService,
@@ -40,6 +45,7 @@ export class CardComponent implements OnInit, OnDestroy {
         };
         this.predicate = 'id';
         this.reverse = true;
+        this.isSaving = false;
     }
 
     loadAll() {
@@ -91,19 +97,44 @@ export class CardComponent implements OnInit, OnDestroy {
     }
 
     sort() {
-        const result = [this.predicate + ',' + (this.reverse ? 'asc' : 'desc')];
+        const result = [this.predicate + ',' + (this.reverse ? 'desc' : 'asc')];
         if (this.predicate !== 'id') {
             result.push('id');
         }
         return result;
     }
 
+    changeEnabled(card: Card, enabled: boolean){
+        card.enabled = !enabled;
+        this.save(card)
+    }
+
+    changeKnown(card: Card, known: boolean){
+        card.known = !known;
+        this.save(card)
+    }
+
+    save(card: Card) {
+        if (card.id !== undefined && !this.isSaving) {
+            this.isSaving = true;
+            this.subscribeToSaveResponse(this.cardService.update(card));
+        }
+    }
+
+    private subscribeToSaveResponse(result: Observable<HttpResponse<Card>>) {
+        result.subscribe((res: HttpResponse<Card>) => this.onSaveSuccess(res.body),
+            (res: HttpErrorResponse) => this.onError(`Saving card error: ${res.error}`));
+    }
+
+    private onSaveSuccess(result: Card) {
+       this.isSaving = false;
+    }
+
     private onSuccess(data, headers) {
         this.links = this.parseLinks.parse(headers.get('link'));
         this.totalItems = headers.get('X-Total-Count');
-        for (let i = 0; i < data.length; i++) {
-            this.cards.push(data[i]);
-        }
+        data.forEach((e) => this.cards.push(e));
+        this.isSaving = false;
     }
 
     private onError(error) {
