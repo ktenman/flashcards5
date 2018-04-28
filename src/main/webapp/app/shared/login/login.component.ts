@@ -1,21 +1,21 @@
-import { Component, AfterViewInit, Renderer, ElementRef } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Router } from '@angular/router';
-import { JhiEventManager } from 'ng-jhipster';
+import {AfterViewInit, Component, ElementRef, Renderer} from '@angular/core'
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap'
+import {Router} from '@angular/router'
+import {JhiEventManager} from 'ng-jhipster'
 
-import { LoginService } from './login.service';
-import { StateStorageService } from '../auth/state-storage.service';
+import {LoginService} from './login.service'
+import {StateStorageService} from '../auth/state-storage.service'
 
 @Component({
     selector: 'jhi-login-modal',
     templateUrl: './login.component.html'
 })
 export class JhiLoginModalComponent implements AfterViewInit {
-    authenticationError: boolean;
-    password: string;
-    rememberMe: boolean;
-    username: string;
-    credentials: any;
+    authenticationError: boolean
+    password: string
+    rememberMe: boolean
+    username: string
+    credentials: any
 
     constructor(
         private eventManager: JhiEventManager,
@@ -26,11 +26,11 @@ export class JhiLoginModalComponent implements AfterViewInit {
         private router: Router,
         public activeModal: NgbActiveModal
     ) {
-        this.credentials = {};
+        this.credentials = {}
     }
 
     ngAfterViewInit() {
-        this.renderer.invokeElementMethod(this.elementRef.nativeElement.querySelector('#username'), 'focus', []);
+        this.renderer.invokeElementMethod(this.elementRef.nativeElement.querySelector('#username'), 'focus', [])
     }
 
     cancel() {
@@ -38,9 +38,9 @@ export class JhiLoginModalComponent implements AfterViewInit {
             username: null,
             password: null,
             rememberMe: true
-        };
-        this.authenticationError = false;
-        this.activeModal.dismiss('cancel');
+        }
+        this.authenticationError = false
+        this.activeModal.dismiss('cancel')
     }
 
     login() {
@@ -49,37 +49,37 @@ export class JhiLoginModalComponent implements AfterViewInit {
             password: this.password,
             rememberMe: this.rememberMe
         }).then(() => {
-            this.authenticationError = false;
-            this.activeModal.dismiss('login success');
+            this.authenticationError = false
+            this.activeModal.dismiss('login success')
             if (this.router.url === '/register' || (/^\/activate\//.test(this.router.url)) ||
                 (/^\/reset\//.test(this.router.url))) {
-                this.router.navigate(['']);
+                this.router.navigate([''])
             }
 
             this.eventManager.broadcast({
                 name: 'authenticationSuccess',
                 content: 'Sending Authentication Success'
-            });
+            })
 
             // // previousState was set in the authExpiredInterceptor before being redirected to login modal.
             // // since login is succesful, go to stored previousState and clear previousState
-            const redirect = this.stateStorageService.getUrl();
+            const redirect = this.stateStorageService.getUrl()
             if (redirect) {
-                this.stateStorageService.storeUrl(null);
-                this.router.navigate([redirect]);
+                this.stateStorageService.storeUrl(null)
+                this.router.navigate([redirect])
             }
         }).catch(() => {
-            this.authenticationError = true;
-        });
+            this.authenticationError = true
+        })
     }
 
     register() {
-        this.activeModal.dismiss('to state register');
-        this.router.navigate(['/register']);
+        this.activeModal.dismiss('to state register')
+        this.router.navigate(['/register'])
     }
 
     requestResetPassword() {
-        this.activeModal.dismiss('to state requestReset');
-        this.router.navigate(['/reset', 'request']);
+        this.activeModal.dismiss('to state requestReset')
+        this.router.navigate(['/reset', 'request'])
     }
 }

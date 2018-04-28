@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import { SERVER_API_URL } from '../../app.constants';
+import {Injectable} from '@angular/core'
+import {HttpClient, HttpResponse} from '@angular/common/http'
+import {Observable} from 'rxjs/Observable'
+import {SERVER_API_URL} from '../../app.constants'
 
 @Injectable()
 export class JhiConfigurationService {
@@ -10,45 +10,45 @@ export class JhiConfigurationService {
     }
 
     get(): Observable<any> {
-        return this.http.get(SERVER_API_URL + 'management/configprops', { observe: 'response' }).map((res: HttpResponse<any>) => {
-            const properties: any[] = [];
+        return this.http.get(SERVER_API_URL + 'management/configprops', {observe: 'response'}).map((res: HttpResponse<any>) => {
+            const properties: any[] = []
 
-            const propertiesObject = res.body;
+            const propertiesObject = res.body
 
             for (const key in propertiesObject) {
                 if (propertiesObject.hasOwnProperty(key)) {
-                    properties.push(propertiesObject[key]);
+                    properties.push(propertiesObject[key])
                 }
             }
 
             return properties.sort((propertyA, propertyB) => {
                 return (propertyA.prefix === propertyB.prefix) ? 0 :
-                       (propertyA.prefix < propertyB.prefix) ? -1 : 1;
-            });
-        });
+                    (propertyA.prefix < propertyB.prefix) ? -1 : 1
+            })
+        })
     }
 
     getEnv(): Observable<any> {
-        return this.http.get(SERVER_API_URL + 'management/env', { observe: 'response' }).map((res: HttpResponse<any>) => {
-            const properties: any = {};
+        return this.http.get(SERVER_API_URL + 'management/env', {observe: 'response'}).map((res: HttpResponse<any>) => {
+            const properties: any = {}
 
-            const propertiesObject = res.body;
+            const propertiesObject = res.body
 
             for (const key in propertiesObject) {
                 if (propertiesObject.hasOwnProperty(key)) {
-                    const valsObject = propertiesObject[key];
-                    const vals: any[] = [];
+                    const valsObject = propertiesObject[key]
+                    const vals: any[] = []
 
                     for (const valKey in valsObject) {
                         if (valsObject.hasOwnProperty(valKey)) {
-                            vals.push({key: valKey, val: valsObject[valKey]});
+                            vals.push({key: valKey, val: valsObject[valKey]})
                         }
                     }
-                    properties[key] = vals;
+                    properties[key] = vals
                 }
             }
 
-            return properties;
-        });
+            return properties
+        })
     }
 }

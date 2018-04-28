@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { JhiLanguageService } from 'ng-jhipster';
+import {Injectable} from '@angular/core'
+import {JhiLanguageService} from 'ng-jhipster'
 
-import { Principal } from '../auth/principal.service';
-import { AuthServerProvider } from '../auth/auth-jwt.service';
+import {Principal} from '../auth/principal.service'
+import {AuthServerProvider} from '../auth/auth-jwt.service'
 
 @Injectable()
 export class LoginService {
@@ -11,7 +11,8 @@ export class LoginService {
         private languageService: JhiLanguageService,
         private principal: Principal,
         private authServerProvider: AuthServerProvider
-    ) {}
+    ) {
+    }
 
     login(credentials, callback?) {
         const cb = callback || function() {};
@@ -22,25 +23,25 @@ export class LoginService {
                     // After the login the language will be changed to
                     // the language selected by the user during his registration
                     if (account !== null) {
-                        this.languageService.changeLanguage(account.langKey);
+                        this.languageService.changeLanguage(account.langKey)
                     }
-                    resolve(data);
-                });
-                return cb();
+                    resolve(data)
+                })
+                return cb()
             }, (err) => {
-                this.logout();
-                reject(err);
-                return cb(err);
-            });
-        });
+                this.logout()
+                reject(err)
+                return cb(err)
+            })
+        })
     }
 
     loginWithToken(jwt, rememberMe) {
-        return this.authServerProvider.loginWithToken(jwt, rememberMe);
+        return this.authServerProvider.loginWithToken(jwt, rememberMe)
     }
 
     logout() {
-        this.authServerProvider.logout().subscribe();
-        this.principal.authenticate(null);
+        this.authServerProvider.logout().subscribe()
+        this.principal.authenticate(null)
     }
 }

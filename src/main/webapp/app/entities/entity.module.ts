@@ -1,11 +1,12 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core'
 
-import { FlashcardsCardModule } from './card/card.module';
+import {FlashcardsCardModule} from './card/card.module'
+
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
     imports: [
-        FlashcardsCardModule,
+        FlashcardsCardModule
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],
@@ -13,4 +14,5 @@ import { FlashcardsCardModule } from './card/card.module';
     providers: [],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class FlashcardsEntityModule {}
+export class FlashcardsEntityModule {
+}

@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { JhiLanguageService } from 'ng-jhipster';
+import {Component, OnInit} from '@angular/core'
+import {Router} from '@angular/router'
+import {NgbModalRef} from '@ng-bootstrap/ng-bootstrap'
+import {JhiLanguageService} from 'ng-jhipster'
 
-import { ProfileService } from '../profiles/profile.service';
-import { JhiLanguageHelper, Principal, LoginModalService, LoginService } from '../../shared';
+import {ProfileService} from '../profiles/profile.service'
+import {JhiLanguageHelper, LoginModalService, LoginService, Principal} from '../../shared'
 
-import { VERSION } from '../../app.constants';
+import {VERSION} from '../../app.constants'
 
 @Component({
     selector: 'jhi-navbar',
@@ -16,12 +16,12 @@ import { VERSION } from '../../app.constants';
     ]
 })
 export class NavbarComponent implements OnInit {
-    inProduction: boolean;
-    isNavbarCollapsed: boolean;
-    languages: any[];
-    swaggerEnabled: boolean;
-    modalRef: NgbModalRef;
-    version: string;
+    inProduction: boolean
+    isNavbarCollapsed: boolean
+    languages: any[]
+    swaggerEnabled: boolean
+    modalRef: NgbModalRef
+    version: string
 
     constructor(
         private loginService: LoginService,
@@ -32,48 +32,48 @@ export class NavbarComponent implements OnInit {
         private profileService: ProfileService,
         private router: Router
     ) {
-        this.version = VERSION ? 'v' + VERSION : '';
-        this.isNavbarCollapsed = true;
+        this.version = VERSION ? 'v' + VERSION : ''
+        this.isNavbarCollapsed = true
     }
 
     ngOnInit() {
         this.languageHelper.getAll().then((languages) => {
-            this.languages = languages;
-        });
+            this.languages = languages
+        })
 
         this.profileService.getProfileInfo().then((profileInfo) => {
-            this.inProduction = profileInfo.inProduction;
-            this.swaggerEnabled = profileInfo.swaggerEnabled;
-        });
+            this.inProduction = profileInfo.inProduction
+            this.swaggerEnabled = profileInfo.swaggerEnabled
+        })
     }
 
     changeLanguage(languageKey: string) {
-      this.languageService.changeLanguage(languageKey);
+        this.languageService.changeLanguage(languageKey)
     }
 
     collapseNavbar() {
-        this.isNavbarCollapsed = true;
+        this.isNavbarCollapsed = true
     }
 
     isAuthenticated() {
-        return this.principal.isAuthenticated();
+        return this.principal.isAuthenticated()
     }
 
     login() {
-        this.modalRef = this.loginModalService.open();
+        this.modalRef = this.loginModalService.open()
     }
 
     logout() {
-        this.collapseNavbar();
-        this.loginService.logout();
-        this.router.navigate(['']);
+        this.collapseNavbar()
+        this.loginService.logout()
+        this.router.navigate([''])
     }
 
     toggleNavbar() {
-        this.isNavbarCollapsed = !this.isNavbarCollapsed;
+        this.isNavbarCollapsed = !this.isNavbarCollapsed
     }
 
     getImageUrl() {
-        return this.isAuthenticated() ? this.principal.getImageUrl() : null;
+        return this.isAuthenticated() ? this.principal.getImageUrl() : null
     }
 }

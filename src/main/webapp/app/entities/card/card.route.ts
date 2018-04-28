@@ -1,10 +1,10 @@
-import { Routes } from '@angular/router';
+import {Routes} from '@angular/router'
 
-import { UserRouteAccessService } from '../../shared';
-import { CardComponent } from './card.component';
-import { CardDetailComponent } from './card-detail.component';
-import { CardPopupComponent } from './card-dialog.component';
-import { CardDeletePopupComponent } from './card-delete-dialog.component';
+import {UserRouteAccessService} from '../../shared'
+import {CardComponent} from './card.component'
+import {CardDetailComponent} from './card-detail.component'
+import {CardPopupComponent} from './card-dialog.component'
+import {CardDeletePopupComponent} from './card-delete-dialog.component'
 
 export const cardRoute: Routes = [
     {
@@ -24,7 +24,7 @@ export const cardRoute: Routes = [
         },
         canActivate: [UserRouteAccessService]
     }
-];
+]
 
 export const cardPopupRoute: Routes = [
     {
@@ -57,4 +57,4 @@ export const cardPopupRoute: Routes = [
         canActivate: [UserRouteAccessService],
         outlet: 'popup'
     }
-];
+]

@@ -1,6 +1,6 @@
-import { Route } from '@angular/router';
+import {Route} from '@angular/router'
 
-import { RegisterComponent } from './register.component';
+import {RegisterComponent} from './register.component'
 
 export const registerRoute: Route = {
     path: 'register',
@@ -9,4 +9,4 @@ export const registerRoute: Route = {
         authorities: [],
         pageTitle: 'register.title'
     }
-};
+}

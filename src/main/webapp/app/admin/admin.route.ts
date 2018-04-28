@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import {Routes} from '@angular/router'
 
 import {
     auditsRoute,
@@ -7,11 +7,11 @@ import {
     healthRoute,
     logsRoute,
     metricsRoute,
-    userMgmtRoute,
-    userDialogRoute
-} from './';
+    userDialogRoute,
+    userMgmtRoute
+} from './'
 
-import { UserRouteAccessService } from '../shared';
+import {UserRouteAccessService} from '../shared'
 
 const ADMIN_ROUTES = [
     auditsRoute,
@@ -21,7 +21,7 @@ const ADMIN_ROUTES = [
     logsRoute,
     ...userMgmtRoute,
     metricsRoute
-];
+]
 
 export const adminState: Routes = [{
     path: '',
@@ -32,4 +32,4 @@ export const adminState: Routes = [{
     children: ADMIN_ROUTES
 },
     ...userDialogRoute
-];
+]

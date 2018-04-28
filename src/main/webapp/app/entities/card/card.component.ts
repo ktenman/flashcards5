@@ -17,17 +17,17 @@ import {Observable} from 'rxjs/Observable'
 })
 export class CardComponent implements OnInit, OnDestroy {
 
-    cards: Card[];
-    currentAccount: any;
-    eventSubscriber: Subscription;
-    itemsPerPage: number;
-    links: any;
-    page: any;
-    predicate: any;
-    queryCount: any;
-    reverse: any;
-    totalItems: number;
-    isSaving: boolean;
+    cards: Card[]
+    currentAccount: any
+    eventSubscriber: Subscription
+    itemsPerPage: number
+    links: any
+    page: any
+    predicate: any
+    queryCount: any
+    reverse: any
+    totalItems: number
+    isSaving: boolean
 
     constructor(
         private cardService: CardService,
@@ -37,15 +37,15 @@ export class CardComponent implements OnInit, OnDestroy {
         private parseLinks: JhiParseLinks,
         private principal: Principal
     ) {
-        this.cards = [];
-        this.itemsPerPage = ITEMS_PER_PAGE;
-        this.page = 0;
+        this.cards = []
+        this.itemsPerPage = ITEMS_PER_PAGE
+        this.page = 0
         this.links = {
             last: 0
-        };
-        this.predicate = 'id';
-        this.reverse = true;
-        this.isSaving = false;
+        }
+        this.predicate = 'id'
+        this.reverse = true
+        this.isSaving = false
     }
 
     loadAll() {
@@ -56,88 +56,90 @@ export class CardComponent implements OnInit, OnDestroy {
         }).subscribe(
             (res: HttpResponse<Card[]>) => this.onSuccess(res.body, res.headers),
             (res: HttpErrorResponse) => this.onError(res.message)
-        );
+        )
     }
 
     reset() {
-        this.page = 0;
-        this.cards = [];
-        this.loadAll();
+        this.page = 0
+        this.cards = []
+        this.loadAll()
     }
 
     loadPage(page) {
-        this.page = page;
-        this.loadAll();
+        this.page = page
+        this.loadAll()
     }
+
     ngOnInit() {
-        this.loadAll();
+        this.loadAll()
         this.principal.identity().then((account) => {
-            this.currentAccount = account;
-        });
-        this.registerChangeInCards();
+            this.currentAccount = account
+        })
+        this.registerChangeInCards()
     }
 
     ngOnDestroy() {
-        this.eventManager.destroy(this.eventSubscriber);
+        this.eventManager.destroy(this.eventSubscriber)
     }
 
     trackId(index: number, item: Card) {
-        return item.id;
+        return item.id
     }
 
     byteSize(field) {
-        return this.dataUtils.byteSize(field);
+        return this.dataUtils.byteSize(field)
     }
 
     openFile(contentType, field) {
-        return this.dataUtils.openFile(contentType, field);
+        return this.dataUtils.openFile(contentType, field)
     }
+
     registerChangeInCards() {
-        this.eventSubscriber = this.eventManager.subscribe('cardListModification', (response) => this.reset());
+        this.eventSubscriber = this.eventManager.subscribe('cardListModification', (response) => this.reset())
     }
 
     sort() {
-        const result = [this.predicate + ',' + (this.reverse ? 'desc' : 'asc')];
+        const result = [this.predicate + ',' + (this.reverse ? 'desc' : 'asc')]
         if (this.predicate !== 'id') {
-            result.push('id');
+            result.push('id')
         }
-        return result;
+        return result
     }
 
-    changeEnabled(card: Card, enabled: boolean){
-        card.enabled = !enabled;
+    changeEnabled(card: Card, enabled: boolean) {
+        card.enabled = !enabled
         this.save(card)
     }
 
-    changeKnown(card: Card, known: boolean){
-        card.known = !known;
+    changeKnown(card: Card, known: boolean) {
+        card.known = !known
         this.save(card)
     }
 
     save(card: Card) {
         if (card.id !== undefined && !this.isSaving) {
-            this.isSaving = true;
-            this.subscribeToSaveResponse(this.cardService.update(card));
+            this.isSaving = true
+            this.subscribeToSaveResponse(this.cardService.update(card))
         }
     }
 
     private subscribeToSaveResponse(result: Observable<HttpResponse<Card>>) {
         result.subscribe((res: HttpResponse<Card>) => this.onSaveSuccess(res.body),
-            (res: HttpErrorResponse) => this.onError(`Saving card error: ${res.error}`));
+            (res: HttpErrorResponse) => this.onError(`Saving card error: ${res.error}`))
     }
 
     private onSaveSuccess(result: Card) {
-       this.isSaving = false;
+        this.isSaving = false
     }
 
     private onSuccess(data, headers) {
-        this.links = this.parseLinks.parse(headers.get('link'));
-        this.totalItems = headers.get('X-Total-Count');
-        data.forEach((e) => this.cards.push(e));
-        this.isSaving = false;
+        this.links = this.parseLinks.parse(headers.get('link'))
+        this.totalItems = headers.get('X-Total-Count')
+        data.forEach((e) => this.cards.push(e))
+        this.isSaving = false
     }
 
     private onError(error) {
-        this.jhiAlertService.error(error.message, null, null);
+        this.jhiAlertService.error(error.message, null, null)
     }
 }

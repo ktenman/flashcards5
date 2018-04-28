@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import {Component, OnInit} from '@angular/core'
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap'
 
 @Component({
     selector: 'jhi-metrics-modal',
@@ -7,42 +7,43 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class JhiMetricsMonitoringModalComponent implements OnInit {
 
-    threadDumpFilter: any;
-    threadDump: any;
-    threadDumpAll = 0;
-    threadDumpBlocked = 0;
-    threadDumpRunnable = 0;
-    threadDumpTimedWaiting = 0;
-    threadDumpWaiting = 0;
+    threadDumpFilter: any
+    threadDump: any
+    threadDumpAll = 0
+    threadDumpBlocked = 0
+    threadDumpRunnable = 0
+    threadDumpTimedWaiting = 0
+    threadDumpWaiting = 0
 
-    constructor(public activeModal: NgbActiveModal) {}
+    constructor(public activeModal: NgbActiveModal) {
+    }
 
     ngOnInit() {
         this.threadDump.forEach((value) => {
             if (value.threadState === 'RUNNABLE') {
-                this.threadDumpRunnable += 1;
+                this.threadDumpRunnable += 1
             } else if (value.threadState === 'WAITING') {
-                this.threadDumpWaiting += 1;
+                this.threadDumpWaiting += 1
             } else if (value.threadState === 'TIMED_WAITING') {
-                this.threadDumpTimedWaiting += 1;
+                this.threadDumpTimedWaiting += 1
             } else if (value.threadState === 'BLOCKED') {
-                this.threadDumpBlocked += 1;
+                this.threadDumpBlocked += 1
             }
-        });
+        })
 
         this.threadDumpAll = this.threadDumpRunnable + this.threadDumpWaiting +
-            this.threadDumpTimedWaiting + this.threadDumpBlocked;
+            this.threadDumpTimedWaiting + this.threadDumpBlocked
     }
 
     getBadgeClass(threadState) {
         if (threadState === 'RUNNABLE') {
-            return 'badge-success';
+            return 'badge-success'
         } else if (threadState === 'WAITING') {
-            return 'badge-info';
+            return 'badge-info'
         } else if (threadState === 'TIMED_WAITING') {
-            return 'badge-warning';
+            return 'badge-warning'
         } else if (threadState === 'BLOCKED') {
-            return 'badge-danger';
+            return 'badge-danger'
         }
     }
 }

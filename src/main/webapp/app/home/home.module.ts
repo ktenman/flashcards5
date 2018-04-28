@@ -1,22 +1,21 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core'
+import {RouterModule} from '@angular/router'
 
-import { FlashcardsSharedModule } from '../shared';
+import {FlashcardsSharedModule} from '../shared'
 
-import { HOME_ROUTE, HomeComponent } from './';
+import {HOME_ROUTE, HomeComponent} from './'
 
 @NgModule({
     imports: [
         FlashcardsSharedModule,
-        RouterModule.forChild([ HOME_ROUTE ])
+        RouterModule.forChild([HOME_ROUTE])
     ],
     declarations: [
-        HomeComponent,
+        HomeComponent
     ],
-    entryComponents: [
-    ],
-    providers: [
-    ],
+    entryComponents: [],
+    providers: [],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class FlashcardsHomeModule {}
+export class FlashcardsHomeModule {
+}

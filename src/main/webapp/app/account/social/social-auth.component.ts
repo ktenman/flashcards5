@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core'
+import {Router} from '@angular/router'
 
-import { LoginService } from '../../shared';
-import { CookieService } from 'ngx-cookie';
+import {LoginService} from '../../shared'
+import {CookieService} from 'ngx-cookie'
 
 @Component({
     selector: 'jhi-auth',
@@ -18,14 +18,14 @@ export class SocialAuthComponent implements OnInit {
     }
 
     ngOnInit() {
-        const token = this.cookieService.get('social-authentication');
+        const token = this.cookieService.get('social-authentication')
         if (token.length) {
             this.loginService.loginWithToken(token, false).then(() => {
-                    this.cookieService.remove('social-authentication');
-                    this.router.navigate(['']);
-                 }, () => {
-                    this.router.navigate(['social-register'], {queryParams: {'success': 'false'}});
-            });
+                this.cookieService.remove('social-authentication')
+                this.router.navigate([''])
+            }, () => {
+                this.router.navigate(['social-register'], {queryParams: {'success': 'false'}})
+            })
         }
     }
 }

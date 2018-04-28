@@ -1,25 +1,25 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core'
+import {RouterModule} from '@angular/router'
 
-import { FlashcardsSharedModule } from '../../shared';
-import { FlashcardsAdminModule } from '../../admin/admin.module';
+import {FlashcardsSharedModule} from '../../shared'
+import {FlashcardsAdminModule} from '../../admin/admin.module'
 import {
-    CardService,
-    CardPopupService,
     CardComponent,
+    CardDeleteDialogComponent,
+    CardDeletePopupComponent,
     CardDetailComponent,
     CardDialogComponent,
     CardPopupComponent,
-    CardDeletePopupComponent,
-    CardDeleteDialogComponent,
-    cardRoute,
     cardPopupRoute,
-} from './';
+    CardPopupService,
+    cardRoute,
+    CardService
+} from './'
 
 const ENTITY_STATES = [
     ...cardRoute,
-    ...cardPopupRoute,
-];
+    ...cardPopupRoute
+]
 
 @NgModule({
     imports: [
@@ -33,19 +33,20 @@ const ENTITY_STATES = [
         CardDialogComponent,
         CardDeleteDialogComponent,
         CardPopupComponent,
-        CardDeletePopupComponent,
+        CardDeletePopupComponent
     ],
     entryComponents: [
         CardComponent,
         CardDialogComponent,
         CardPopupComponent,
         CardDeleteDialogComponent,
-        CardDeletePopupComponent,
+        CardDeletePopupComponent
     ],
     providers: [
         CardService,
-        CardPopupService,
+        CardPopupService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class FlashcardsCardModule {}
+export class FlashcardsCardModule {
+}

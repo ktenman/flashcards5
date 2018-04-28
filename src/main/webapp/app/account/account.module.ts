@@ -1,25 +1,25 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core'
+import {RouterModule} from '@angular/router'
 
-import { FlashcardsSharedModule } from '../shared';
+import {FlashcardsSharedModule} from '../shared'
 
 import {
-    Register,
-    ActivateService,
-    PasswordService,
-    PasswordResetInitService,
-    PasswordResetFinishService,
-    PasswordStrengthBarComponent,
-    RegisterComponent,
+    accountState,
     ActivateComponent,
+    ActivateService,
     PasswordComponent,
-    PasswordResetInitComponent,
     PasswordResetFinishComponent,
+    PasswordResetFinishService,
+    PasswordResetInitComponent,
+    PasswordResetInitService,
+    PasswordService,
+    PasswordStrengthBarComponent,
+    Register,
+    RegisterComponent,
     SettingsComponent,
-    SocialRegisterComponent,
     SocialAuthComponent,
-    accountState
-} from './';
+    SocialRegisterComponent
+} from './'
 
 @NgModule({
     imports: [
@@ -46,4 +46,5 @@ import {
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class FlashcardsAccountModule {}
+export class FlashcardsAccountModule {
+}

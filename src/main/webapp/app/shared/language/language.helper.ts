@@ -1,13 +1,13 @@
-import { Injectable, RendererFactory2, Renderer2 } from '@angular/core';
-import { Title } from '@angular/platform-browser';
-import { Router, ActivatedRouteSnapshot } from '@angular/router';
-import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
+import {Injectable, Renderer2, RendererFactory2} from '@angular/core'
+import {Title} from '@angular/platform-browser'
+import {ActivatedRouteSnapshot, Router} from '@angular/router'
+import {LangChangeEvent, TranslateService} from '@ngx-translate/core'
 
-import { LANGUAGES } from './language.constants';
+import {LANGUAGES} from './language.constants'
 
 @Injectable()
 export class JhiLanguageHelper {
-    renderer: Renderer2 = null;
+    renderer: Renderer2 = null
 
     constructor(
         private translateService: TranslateService,
@@ -16,12 +16,12 @@ export class JhiLanguageHelper {
         private titleService: Title,
         private router: Router
     ) {
-        this.renderer = rootRenderer.createRenderer(document.querySelector('html'), null);
-        this.init();
+        this.renderer = rootRenderer.createRenderer(document.querySelector('html'), null)
+        this.init()
     }
 
     getAll(): Promise<any> {
-        return Promise.resolve(LANGUAGES);
+        return Promise.resolve(LANGUAGES)
     }
 
     /**
@@ -33,26 +33,26 @@ export class JhiLanguageHelper {
      */
     updateTitle(titleKey?: string) {
         if (!titleKey) {
-             titleKey = this.getPageTitle(this.router.routerState.snapshot.root);
+            titleKey = this.getPageTitle(this.router.routerState.snapshot.root)
         }
 
         this.translateService.get(titleKey).subscribe((title) => {
-            this.titleService.setTitle(title);
-        });
+            this.titleService.setTitle(title)
+        })
     }
 
     private init() {
         this.translateService.onLangChange.subscribe((event: LangChangeEvent) => {
-            this.renderer.setAttribute(document.querySelector('html'), 'lang', this.translateService.currentLang);
-            this.updateTitle();
-        });
+            this.renderer.setAttribute(document.querySelector('html'), 'lang', this.translateService.currentLang)
+            this.updateTitle()
+        })
     }
 
     private getPageTitle(routeSnapshot: ActivatedRouteSnapshot) {
-        let title: string = (routeSnapshot.data && routeSnapshot.data['pageTitle']) ? routeSnapshot.data['pageTitle'] : 'flashcardsApp';
+        let title: string = (routeSnapshot.data && routeSnapshot.data['pageTitle']) ? routeSnapshot.data['pageTitle'] : 'flashcardsApp'
         if (routeSnapshot.firstChild) {
-            title = this.getPageTitle(routeSnapshot.firstChild) || title;
+            title = this.getPageTitle(routeSnapshot.firstChild) || title
         }
-        return title;
+        return title
     }
 }

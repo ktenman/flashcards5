@@ -1,40 +1,43 @@
 <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
 
     <div class="modal-header">
-        <h4 class="modal-title" id="myCardLabel" jhiTranslate="flashcardsApp.card.home.createOrEditLabel">Create or edit a Card</h4>
+        <h4 class="modal-title" id="myCardLabel" jhiTranslate="flashcardsApp.card.home.createOrEditLabel">Create or edit
+            a Card</h4>
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                (click)="clear()">&times;</button>
+                (click)="clear()">&times;
+        </button>
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
         <div class="form-group" [hidden]="!card.id">
             <label for="id" jhiTranslate="global.field.id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
-                   [(ngModel)]="card.id" readonly />
+                   [(ngModel)]="card.id" readonly/>
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="flashcardsApp.card.front" for="field_front">Front</label>
             <input type="text" class="form-control" name="front" id="field_front"
-                [(ngModel)]="card.front" required maxlength="500"/>
+                   [(ngModel)]="card.front" required maxlength="500"/>
             <div [hidden]="!(editForm.controls.front?.dirty && editForm.controls.front?.invalid)">
                 <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.front?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
+                       [hidden]="!editForm.controls.front?.errors?.required" jhiTranslate="entity.validation.required">
+                    This field is required.
                 </small>
                 <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.front?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 500 }">
-                   This field cannot be longer than 500 characters.
+                       [hidden]="!editForm.controls.front?.errors?.maxlength" jhiTranslate="entity.validation.maxlength"
+                       translateValues="{ max: 500 }">
+                    This field cannot be longer than 500 characters.
                 </small>
             </div>
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="flashcardsApp.card.back" for="field_back">Back</label>
             <textarea class="form-control" name="back" id="field_back"
-                [(ngModel)]="card.back" required></textarea>
+                      [(ngModel)]="card.back" required></textarea>
             <div [hidden]="!(editForm.controls.back?.dirty && editForm.controls.back?.invalid)">
                 <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.back?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
+                       [hidden]="!editForm.controls.back?.errors?.required" jhiTranslate="entity.validation.required">
+                    This field is required.
                 </small>
             </div>
         </div>
@@ -46,7 +49,8 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="flashcardsApp.card.enabled" for="field_enabled">Enabled</label>
+            <label class="form-control-label" jhiTranslate="flashcardsApp.card.enabled"
+                   for="field_enabled">Enabled</label>
             <div class="checkbox">
                 <input id="field_enabled" type="checkbox" name="imageEnabled" checked="" [(ngModel)]="card.enabled">
                 <label for="field_enabled"></label>

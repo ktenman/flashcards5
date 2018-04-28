@@ -1,15 +1,15 @@
-import { Routes } from '@angular/router';
+import {Routes} from '@angular/router'
 
 import {
     activateRoute,
-    passwordRoute,
     passwordResetFinishRoute,
     passwordResetInitRoute,
+    passwordRoute,
     registerRoute,
-    socialRegisterRoute,
+    settingsRoute,
     socialAuthRoute,
-    settingsRoute
-} from './';
+    socialRegisterRoute
+} from './'
 
 const ACCOUNT_ROUTES = [
     activateRoute,
@@ -20,9 +20,9 @@ const ACCOUNT_ROUTES = [
     socialAuthRoute,
     socialRegisterRoute,
     settingsRoute
-];
+]
 
 export const accountState: Routes = [{
     path: '',
     children: ACCOUNT_ROUTES
-}];
+}]

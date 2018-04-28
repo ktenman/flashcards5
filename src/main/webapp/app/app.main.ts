@@ -1,13 +1,13 @@
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { ProdConfig } from './blocks/config/prod.config';
-import { FlashcardsAppModule } from './app.module';
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic'
+import {ProdConfig} from './blocks/config/prod.config'
+import {FlashcardsAppModule} from './app.module'
 
-ProdConfig();
+ProdConfig()
 
 if (module['hot']) {
-    module['hot'].accept();
+    module['hot'].accept()
 }
 
 platformBrowserDynamic().bootstrapModule(FlashcardsAppModule)
-.then((success) => console.log(`Application started`))
-.catch((err) => console.error(err));
+    .then((success) => console.log(`Application started`))
+    .catch((err) => console.error(err))

@@ -1,15 +1,15 @@
-import { NgModule, LOCALE_ID } from '@angular/core';
-import { Title } from '@angular/platform-browser';
-import { registerLocaleData } from '@angular/common';
-import locale from '@angular/common/locales/et';
+import {LOCALE_ID, NgModule} from '@angular/core'
+import {Title} from '@angular/platform-browser'
+import {registerLocaleData} from '@angular/common'
+import locale from '@angular/common/locales/et'
 
 import {
-    FlashcardsSharedLibsModule,
-    JhiLanguageHelper,
     FindLanguageFromKeyPipe,
+    FlashcardsSharedLibsModule,
     JhiAlertComponent,
-    JhiAlertErrorComponent
-} from './';
+    JhiAlertErrorComponent,
+    JhiLanguageHelper
+} from './'
 
 @NgModule({
     imports: [
@@ -26,7 +26,7 @@ import {
         {
             provide: LOCALE_ID,
             useValue: 'et'
-        },
+        }
     ],
     exports: [
         FlashcardsSharedLibsModule,
@@ -37,6 +37,6 @@ import {
 })
 export class FlashcardsSharedCommonModule {
     constructor() {
-        registerLocaleData(locale);
+        registerLocaleData(locale)
     }
 }

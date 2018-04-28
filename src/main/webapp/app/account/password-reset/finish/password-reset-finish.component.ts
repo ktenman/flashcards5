@@ -1,23 +1,23 @@
-import { Component, OnInit, AfterViewInit, Renderer, ElementRef } from '@angular/core';
-import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { ActivatedRoute } from '@angular/router';
+import {AfterViewInit, Component, ElementRef, OnInit, Renderer} from '@angular/core'
+import {NgbModalRef} from '@ng-bootstrap/ng-bootstrap'
+import {ActivatedRoute} from '@angular/router'
 
-import { PasswordResetFinishService } from './password-reset-finish.service';
-import { LoginModalService } from '../../../shared';
+import {PasswordResetFinishService} from './password-reset-finish.service'
+import {LoginModalService} from '../../../shared'
 
 @Component({
     selector: 'jhi-password-reset-finish',
     templateUrl: './password-reset-finish.component.html'
 })
 export class PasswordResetFinishComponent implements OnInit, AfterViewInit {
-    confirmPassword: string;
-    doNotMatch: string;
-    error: string;
-    keyMissing: boolean;
-    resetAccount: any;
-    success: string;
-    modalRef: NgbModalRef;
-    key: string;
+    confirmPassword: string
+    doNotMatch: string
+    error: string
+    keyMissing: boolean
+    resetAccount: any
+    success: string
+    modalRef: NgbModalRef
+    key: string
 
     constructor(
         private passwordResetFinishService: PasswordResetFinishService,
@@ -29,34 +29,37 @@ export class PasswordResetFinishComponent implements OnInit, AfterViewInit {
 
     ngOnInit() {
         this.route.queryParams.subscribe((params) => {
-            this.key = params['key'];
-        });
-        this.resetAccount = {};
-        this.keyMissing = !this.key;
+            this.key = params['key']
+        })
+        this.resetAccount = {}
+        this.keyMissing = !this.key
     }
 
     ngAfterViewInit() {
         if (this.elementRef.nativeElement.querySelector('#password') != null) {
-          this.renderer.invokeElementMethod(this.elementRef.nativeElement.querySelector('#password'), 'focus', []);
+            this.renderer.invokeElementMethod(this.elementRef.nativeElement.querySelector('#password'), 'focus', [])
         }
     }
 
     finishReset() {
-        this.doNotMatch = null;
-        this.error = null;
+        this.doNotMatch = null
+        this.error = null
         if (this.resetAccount.password !== this.confirmPassword) {
-            this.doNotMatch = 'ERROR';
+            this.doNotMatch = 'ERROR'
         } else {
-            this.passwordResetFinishService.save({key: this.key, newPassword: this.resetAccount.password}).subscribe(() => {
-                this.success = 'OK';
+            this.passwordResetFinishService.save({
+                key: this.key,
+                newPassword: this.resetAccount.password
+            }).subscribe(() => {
+                this.success = 'OK'
             }, () => {
-                this.success = null;
-                this.error = 'ERROR';
-            });
+                this.success = null
+                this.error = 'ERROR'
+            })
         }
     }
 
     login() {
-        this.modalRef = this.loginModalService.open();
+        this.modalRef = this.loginModalService.open()
     }
 }

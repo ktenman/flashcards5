@@ -8,9 +8,9 @@ export class Card implements BaseEntity {
         public known?: boolean,
         public enabled?: boolean,
         public userLogin?: string,
-        public userId?: number,
+        public userId?: number
     ) {
-        this.known = false;
-        this.enabled = true;
+        this.known = false
+        this.enabled = true
     }
 }

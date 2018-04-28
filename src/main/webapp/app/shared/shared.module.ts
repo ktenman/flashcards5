@@ -25,14 +25,14 @@ import {KatexModule} from 'ng-katex'
     imports: [
         FlashcardsSharedLibsModule,
         FlashcardsSharedCommonModule,
-        KatexModule,
+        KatexModule
     ],
     declarations: [
         JhiSocialComponent,
         JhiLoginModalComponent,
         HasAnyAuthorityDirective,
         JhiLatexComponent,
-        ReplaceLineBreaksPipe,
+        ReplaceLineBreaksPipe
     ],
     providers: [
         LoginService,
@@ -53,9 +53,10 @@ import {KatexModule} from 'ng-katex'
         JhiLoginModalComponent,
         HasAnyAuthorityDirective,
         DatePipe,
-        JhiLatexComponent,
+        JhiLatexComponent
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 
 })
-export class FlashcardsSharedModule {}
+export class FlashcardsSharedModule {
+}

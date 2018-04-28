@@ -1,12 +1,12 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {Component, OnDestroy, OnInit} from '@angular/core'
+import {ActivatedRoute} from '@angular/router'
 
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { JhiEventManager } from 'ng-jhipster';
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap'
+import {JhiEventManager} from 'ng-jhipster'
 
-import { Card } from './card.model';
-import { CardPopupService } from './card-popup.service';
-import { CardService } from './card.service';
+import {Card} from './card.model'
+import {CardPopupService} from './card-popup.service'
+import {CardService} from './card.service'
 
 @Component({
     selector: 'jhi-card-delete-dialog',
@@ -14,7 +14,7 @@ import { CardService } from './card.service';
 })
 export class CardDeleteDialogComponent {
 
-    card: Card;
+    card: Card
 
     constructor(
         private cardService: CardService,
@@ -24,7 +24,7 @@ export class CardDeleteDialogComponent {
     }
 
     clear() {
-        this.activeModal.dismiss('cancel');
+        this.activeModal.dismiss('cancel')
     }
 
     confirmDelete(id: number) {
@@ -32,9 +32,9 @@ export class CardDeleteDialogComponent {
             this.eventManager.broadcast({
                 name: 'cardListModification',
                 content: 'Deleted an card'
-            });
-            this.activeModal.dismiss(true);
-        });
+            })
+            this.activeModal.dismiss(true)
+        })
     }
 }
 
@@ -44,21 +44,22 @@ export class CardDeleteDialogComponent {
 })
 export class CardDeletePopupComponent implements OnInit, OnDestroy {
 
-    routeSub: any;
+    routeSub: any
 
     constructor(
         private route: ActivatedRoute,
         private cardPopupService: CardPopupService
-    ) {}
+    ) {
+    }
 
     ngOnInit() {
         this.routeSub = this.route.params.subscribe((params) => {
             this.cardPopupService
-                .open(CardDeleteDialogComponent as Component, params['id']);
-        });
+                .open(CardDeleteDialogComponent as Component, params['id'])
+        })
     }
 
     ngOnDestroy() {
-        this.routeSub.unsubscribe();
+        this.routeSub.unsubscribe()
     }
 }

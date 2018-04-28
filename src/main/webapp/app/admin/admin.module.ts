@@ -1,39 +1,39 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core'
+import {RouterModule} from '@angular/router'
 
-import { FlashcardsSharedModule } from '../shared';
-/* jhipster-needle-add-admin-module-import - JHipster will add admin modules imports here */
-
+import {FlashcardsSharedModule} from '../shared'
 import {
     adminState,
     AuditsComponent,
-    UserMgmtComponent,
-    UserDialogComponent,
+    AuditsService,
+    JhiConfigurationComponent,
+    JhiConfigurationService,
+    JhiDocsComponent,
+    JhiHealthCheckComponent,
+    JhiHealthModalComponent,
+    JhiHealthService,
+    JhiMetricsMonitoringComponent,
+    JhiMetricsMonitoringModalComponent,
+    JhiMetricsService,
+    LogsComponent,
+    LogsService,
     UserDeleteDialogComponent,
+    UserDialogComponent,
+    UserMgmtComponent,
+    UserMgmtDeleteDialogComponent,
     UserMgmtDetailComponent,
     UserMgmtDialogComponent,
-    UserMgmtDeleteDialogComponent,
-    LogsComponent,
-    JhiMetricsMonitoringModalComponent,
-    JhiMetricsMonitoringComponent,
-    JhiHealthModalComponent,
-    JhiHealthCheckComponent,
-    JhiConfigurationComponent,
-    JhiDocsComponent,
-    AuditsService,
-    JhiConfigurationService,
-    JhiHealthService,
-    JhiMetricsService,
-    LogsService,
-    UserResolvePagingParams,
+    UserModalService,
     UserResolve,
-    UserModalService
-} from './';
+    UserResolvePagingParams
+} from './'
+
+/* jhipster-needle-add-admin-module-import - JHipster will add admin modules imports here */
 
 @NgModule({
     imports: [
         FlashcardsSharedModule,
-        RouterModule.forChild(adminState),
+        RouterModule.forChild(adminState)
         /* jhipster-needle-add-admin-module - JHipster will add admin modules here */
     ],
     declarations: [
@@ -56,7 +56,7 @@ import {
         UserMgmtDialogComponent,
         UserMgmtDeleteDialogComponent,
         JhiHealthModalComponent,
-        JhiMetricsMonitoringModalComponent,
+        JhiMetricsMonitoringModalComponent
     ],
     providers: [
         AuditsService,
@@ -70,4 +70,5 @@ import {
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class FlashcardsAdminModule {}
+export class FlashcardsAdminModule {
+}

@@ -1,7 +1,8 @@
 <div>
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <h1 *ngIf="success" jhiTranslate="social.register.title" translateValues="{ label: '{{providerLabel}}' }">Registration with</h1>
+            <h1 *ngIf="success" jhiTranslate="social.register.title" translateValues="{ label: '{{providerLabel}}' }">
+                Registration with</h1>
             <h1 *ngIf="error" jhiTranslate="social.register.errorTitle">Registration</h1>
 
             <div class="alert alert-success" *ngIf="success" jhiTranslate="social.register.messages.success">

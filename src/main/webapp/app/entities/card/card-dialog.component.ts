@@ -1,15 +1,15 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import {Component, OnDestroy, OnInit} from '@angular/core'
+import {ActivatedRoute} from '@angular/router'
+import {HttpErrorResponse, HttpResponse} from '@angular/common/http'
 
-import { Observable } from 'rxjs/Observable';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { JhiEventManager, JhiAlertService, JhiDataUtils } from 'ng-jhipster';
+import {Observable} from 'rxjs/Observable'
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap'
+import {JhiAlertService, JhiDataUtils, JhiEventManager} from 'ng-jhipster'
 
-import { Card } from './card.model';
-import { CardPopupService } from './card-popup.service';
-import { CardService } from './card.service';
-import { User, UserService } from '../../shared';
+import {Card} from './card.model'
+import {CardPopupService} from './card-popup.service'
+import {CardService} from './card.service'
+import {User, UserService} from '../../shared'
 
 @Component({
     selector: 'jhi-card-dialog',
@@ -17,10 +17,10 @@ import { User, UserService } from '../../shared';
 })
 export class CardDialogComponent implements OnInit {
 
-    card: Card;
-    isSaving: boolean;
+    card: Card
+    isSaving: boolean
 
-    users: User[];
+    users: User[]
 
     constructor(
         public activeModal: NgbActiveModal,
@@ -33,59 +33,61 @@ export class CardDialogComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.isSaving = false;
+        this.isSaving = false
         this.userService.query()
-            .subscribe((res: HttpResponse<User[]>) => { this.users = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
+            .subscribe((res: HttpResponse<User[]>) => {
+                this.users = res.body
+            }, (res: HttpErrorResponse) => this.onError(res.message))
     }
 
     byteSize(field) {
-        return this.dataUtils.byteSize(field);
+        return this.dataUtils.byteSize(field)
     }
 
     openFile(contentType, field) {
-        return this.dataUtils.openFile(contentType, field);
+        return this.dataUtils.openFile(contentType, field)
     }
 
     setFileData(event, entity, field, isImage) {
-        this.dataUtils.setFileData(event, entity, field, isImage);
+        this.dataUtils.setFileData(event, entity, field, isImage)
     }
 
     clear() {
-        this.activeModal.dismiss('cancel');
+        this.activeModal.dismiss('cancel')
     }
 
     save() {
-        this.isSaving = true;
+        this.isSaving = true
         if (this.card.id !== undefined) {
             this.subscribeToSaveResponse(
-                this.cardService.update(this.card));
+                this.cardService.update(this.card))
         } else {
             this.subscribeToSaveResponse(
-                this.cardService.create(this.card));
+                this.cardService.create(this.card))
         }
+    }
+
+    trackUserById(index: number, item: User) {
+        return item.id
     }
 
     private subscribeToSaveResponse(result: Observable<HttpResponse<Card>>) {
         result.subscribe((res: HttpResponse<Card>) =>
-            this.onSaveSuccess(res.body), (res: HttpErrorResponse) => this.onSaveError());
+            this.onSaveSuccess(res.body), (res: HttpErrorResponse) => this.onSaveError())
     }
 
     private onSaveSuccess(result: Card) {
-        this.eventManager.broadcast({ name: 'cardListModification', content: 'OK'});
-        this.isSaving = false;
-        this.activeModal.dismiss(result);
+        this.eventManager.broadcast({name: 'cardListModification', content: 'OK'})
+        this.isSaving = false
+        this.activeModal.dismiss(result)
     }
 
     private onSaveError() {
-        this.isSaving = false;
+        this.isSaving = false
     }
 
     private onError(error: any) {
-        this.jhiAlertService.error(error.message, null, null);
-    }
-
-    trackUserById(index: number, item: User) {
-        return item.id;
+        this.jhiAlertService.error(error.message, null, null)
     }
 }
 
@@ -95,26 +97,27 @@ export class CardDialogComponent implements OnInit {
 })
 export class CardPopupComponent implements OnInit, OnDestroy {
 
-    routeSub: any;
+    routeSub: any
 
     constructor(
         private route: ActivatedRoute,
         private cardPopupService: CardPopupService
-    ) {}
+    ) {
+    }
 
     ngOnInit() {
         this.routeSub = this.route.params.subscribe((params) => {
-            if ( params['id'] ) {
+            if (params['id']) {
                 this.cardPopupService
-                    .open(CardDialogComponent as Component, params['id']);
+                    .open(CardDialogComponent as Component, params['id'])
             } else {
                 this.cardPopupService
-                    .open(CardDialogComponent as Component);
+                    .open(CardDialogComponent as Component)
             }
-        });
+        })
     }
 
     ngOnDestroy() {
-        this.routeSub.unsubscribe();
+        this.routeSub.unsubscribe()
     }
 }
