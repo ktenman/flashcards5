@@ -4,6 +4,8 @@ import {RouterModule} from '@angular/router'
 import {FlashcardsSharedModule} from '../shared'
 
 import {HOME_ROUTE, HomeComponent} from './'
+import {JhiRandomCardComponent} from '../layouts'
+import {RandomCardService} from '../layouts/random-card/random-card.service'
 
 @NgModule({
     imports: [
@@ -11,10 +13,11 @@ import {HOME_ROUTE, HomeComponent} from './'
         RouterModule.forChild([HOME_ROUTE])
     ],
     declarations: [
-        HomeComponent
+        HomeComponent,
+        JhiRandomCardComponent
     ],
     entryComponents: [],
-    providers: [],
+    providers: [RandomCardService],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class FlashcardsHomeModule {
