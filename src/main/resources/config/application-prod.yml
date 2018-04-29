@@ -47,6 +47,10 @@ spring:
         password:
     thymeleaf:
         cache: true
+    social:
+        google:
+            client-id: xxx
+            client-secret: xxx
 
 liquibase:
     contexts: prod
