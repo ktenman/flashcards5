@@ -6,16 +6,33 @@
                 <jhi-random-card></jhi-random-card>
             </div>
 
-            <div class="row" *ngSwitchCase="false">
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
-                    <h3 jhiTranslate="login.title">Sign in</h3>
-                    <jhi-social provider="google"></jhi-social>
-                    <button type="submit" disabled class="btn btn-block jh-btn-social jh-btn-facebook">
-                        <span>Facebook</span>
-                    </button>
+            <div class="d-none d-xl-block">
+                <div class="row" *ngSwitchCase="false">
+                    <div class="col-md-5"></div>
+                    <div class="col-md-2">
+                        <h3 jhiTranslate="login.title">Sign in</h3>
+                        <jhi-social provider="google"></jhi-social>
+                        <button type="submit" disabled class="btn btn-block jh-btn-social jh-btn-facebook">
+                            <span>Facebook</span>
+                        </button>
+                    </div>
+                    <div class="col-md-5">
+                    </div>
                 </div>
-                <div class="col-xmd-4">
+            </div>
+
+            <div class="d-xl-none d-xs-block">
+                <div class="row" *ngSwitchCase="false">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <h3 jhiTranslate="login.title">Sign in</h3>
+                        <jhi-social provider="google"></jhi-social>
+                        <button type="submit" disabled class="btn btn-block jh-btn-social jh-btn-facebook">
+                            <span>Facebook</span>
+                        </button>
+                    </div>
+                    <div class="col-md-4">
+                    </div>
                 </div>
             </div>
 
