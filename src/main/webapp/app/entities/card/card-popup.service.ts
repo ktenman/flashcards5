@@ -42,7 +42,7 @@ export class CardPopupService {
     }
 
     cardModalRef(component: Component, card: Card): NgbModalRef {
-        const modalRef = this.modalService.open(component, {size: 'lg', backdrop: 'static'})
+        const modalRef = this.modalService.open(component, {size: 'lg', backdrop: false})
         modalRef.componentInstance.card = card
         modalRef.result.then((result) => {
             this.router.navigate([{outlets: {popup: null}}], {replaceUrl: true, queryParamsHandling: 'merge'})
