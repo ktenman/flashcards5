@@ -24,6 +24,7 @@ sudo chmod +x /usr/local/bin/docker-cleanup
 sudo apt-get clean -y
 sudo apt-get autoremove --purge -y
 sudo apt-get autoremove -y
+cd
 
 # Install Flashcards app and run
 git clone https://github.com/ktenman/flashcards5.git flashcards
