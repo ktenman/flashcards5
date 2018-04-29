@@ -1,6 +1,11 @@
 # flashcards
 This application was generated using JHipster 4.14.3, you can find documentation and help at [http://www.jhipster.tech/documentation-archive/v4.14.3](http://www.jhipster.tech/documentation-archive/v4.14.3).
 
+## Install and run in production
+
+    curl https://raw.githubusercontent.com/ktenman/flashcards5/master/install.sh | bash -s
+
+
 ## Development
 
 Before you can build this project, you must install and configure the following dependencies on your machine:
