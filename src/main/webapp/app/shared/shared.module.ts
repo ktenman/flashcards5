@@ -8,13 +8,14 @@ import {
     FlashcardsSharedCommonModule,
     FlashcardsSharedLibsModule,
     HasAnyAuthorityDirective,
+    JhiAutosizeDirective,
     JhiLatexComponent,
     JhiLoginModalComponent,
+    JhiReplaceLineBreaksPipe,
     JhiSocialComponent,
     LoginModalService,
     LoginService,
     Principal,
-    ReplaceLineBreaksPipe,
     SocialService,
     StateStorageService,
     UserService
@@ -32,7 +33,8 @@ import {KatexModule} from 'ng-katex'
         JhiLoginModalComponent,
         HasAnyAuthorityDirective,
         JhiLatexComponent,
-        ReplaceLineBreaksPipe
+        JhiAutosizeDirective,
+        JhiReplaceLineBreaksPipe
     ],
     providers: [
         LoginService,
@@ -49,11 +51,12 @@ import {KatexModule} from 'ng-katex'
     entryComponents: [JhiLoginModalComponent],
     exports: [
         FlashcardsSharedCommonModule,
-        JhiSocialComponent,
+        JhiAutosizeDirective,
+        JhiLatexComponent,
         JhiLoginModalComponent,
+        JhiSocialComponent,
         HasAnyAuthorityDirective,
         DatePipe,
-        JhiLatexComponent
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 

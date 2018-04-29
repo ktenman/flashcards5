@@ -29,8 +29,8 @@
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="flashcardsApp.card.back" for="field_back">Back</label>
-            <textarea class="form-control" name="back" id="field_back"
-                      [(ngModel)]="card.back" required rows="10"></textarea>
+            <textarea jhiAutosize class="form-control" name="back" id="field_back"
+                      [(ngModel)]="card.back" required></textarea>
             <div [hidden]="!(editForm.controls.back?.dirty && editForm.controls.back?.invalid)">
                 <small class="form-text text-danger"
                        [hidden]="!editForm.controls.back?.errors?.required" jhiTranslate="entity.validation.required">
