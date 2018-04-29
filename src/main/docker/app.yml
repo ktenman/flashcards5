@@ -1,6 +1,7 @@
 version: '2'
 services:
     flashcards-app:
+        restart: always
         image: flashcards
         environment:
             - SPRING_PROFILES_ACTIVE=prod,swagger
@@ -9,6 +10,7 @@ services:
         ports:
             - 80:80
     flashcards-postgresql:
+        restart: always
         extends:
             file: postgresql.yml
             service: flashcards-postgresql
