@@ -1,1 +1,1 @@
-git clone https://github.com/ktenman/flashcards5.git flashcards && cd flashcards && sudo chmod a+x mvnw && ./mvnw verify -Pprod dockerfile:build && docker-compose -f src/main/docker/app.yml up -d
+git clone https://github.com/ktenman/flashcards5.git flashcards && cd flashcards && sudo apt-get update && sudo apt-get install nodejs && sudo apt-get install npm && sudo apt-get install build-essential && sudo chmod a+x mvnw && ./mvnw verify -Pprod dockerfile:build && docker-compose -f src/main/docker/app.yml up -d
