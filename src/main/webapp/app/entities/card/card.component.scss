@@ -5,3 +5,14 @@
 input[type="checkbox"], input[type="checkbox"] + label {
     cursor: pointer !important;
 }
+
+.btn-outline-primary, .btn-outline-danger {
+    border-color: transparent;
+}
+
+.btn-outline {
+    &-primary,
+    &-danger {
+        border-color: transparent;
+    }
+}

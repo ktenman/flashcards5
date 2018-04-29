@@ -19,8 +19,9 @@
             "front": "Esikülg",
             "back": "Tagakülg",
             "known": "Selge",
-            "enabled": "Lubatud",
-            "user": "User"
+            "enabled": "Kuva",
+            "user": "User",
+            "preview": "Eelvaade"
         }
     }
 }

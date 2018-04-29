@@ -20,7 +20,8 @@
             "back": "Back",
             "known": "Known",
             "enabled": "Enabled",
-            "user": "User"
+            "user": "User",
+            "preview": "Preview"
         }
     }
 }

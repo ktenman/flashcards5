@@ -7,13 +7,10 @@
                 (click)="clear()">&times;
         </button>
     </div>
-    <div class="modal-body">
+    <div class="modal-body ml-md-3 mr-md-3">
         <jhi-alert-error></jhi-alert-error>
-        <div class="form-group" [hidden]="!card.id">
-            <label for="id" jhiTranslate="global.field.id">ID</label>
-            <input type="text" class="form-control" id="id" name="id"
-                   [(ngModel)]="card.id" readonly/>
-        </div>
+        <input type="text" class="form-control" id="id" name="id"
+               [(ngModel)]="card.id" hidden/>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="flashcardsApp.card.front" for="field_front">Front</label>
             <input type="text" class="form-control" name="front" id="field_front"
@@ -33,7 +30,7 @@
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="flashcardsApp.card.back" for="field_back">Back</label>
             <textarea class="form-control" name="back" id="field_back"
-                      [(ngModel)]="card.back" required></textarea>
+                      [(ngModel)]="card.back" required rows="10"></textarea>
             <div [hidden]="!(editForm.controls.back?.dirty && editForm.controls.back?.invalid)">
                 <small class="form-text text-danger"
                        [hidden]="!editForm.controls.back?.errors?.required" jhiTranslate="entity.validation.required">
@@ -42,18 +39,29 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="flashcardsApp.card.known" for="field_known">Known</label>
-            <div class="checkbox">
-                <input id="field_known" type="checkbox" name="known" checked="" [(ngModel)]="card.known">
-                <label for="field_known"></label>
+            <label class="form-control-label" jhiTranslate="flashcardsApp.card.preview" for="field_back">Back</label>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <jhi-latex [equation]="card.front"></jhi-latex>
+                    </h5>
+                    <p class="card-text">
+                        <jhi-latex [equation]="card.back"></jhi-latex>
+                    </p>
+                </div>
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="flashcardsApp.card.enabled"
-                   for="field_enabled">Enabled</label>
-            <div class="checkbox">
-                <input id="field_enabled" type="checkbox" name="enabled" checked="" [(ngModel)]="card.enabled">
-                <label for="field_enabled"></label>
+            <div class="form-check form-check-inline checkbox">
+                <input class="form-check-input" id="field_known" type="checkbox" name="known" checked=""
+                       [(ngModel)]="card.known">
+                <label class="form-check-label mt-4" jhiTranslate="flashcardsApp.card.known"
+                       for="field_known">Known</label>
+            </div>
+            <div class="form-check form-check-inline checkbox">
+                <input class="form-check-input" id="field_enabled" type="checkbox" name="enabled" checked=""
+                       [(ngModel)]="card.enabled">
+                <label class="form-check-label mt-4" jhiTranslate="flashcardsApp.card.enabled" for="field_enabled">Enabled</label>
             </div>
         </div>
     </div>
