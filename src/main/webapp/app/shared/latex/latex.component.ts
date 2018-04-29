@@ -27,7 +27,7 @@ export class JhiLatexComponent {
     }
 
     splitParagraph(paragraph: string): Array<string> {
-        return paragraph.split(this.splitRe).filter((x) => x)
+        return paragraph ? paragraph.split(this.splitRe).filter((x) => x) : null
     }
 
     classify(s: string): number {
