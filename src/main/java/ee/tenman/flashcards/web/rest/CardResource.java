@@ -25,6 +25,7 @@ import java.util.Optional;
 import java.util.Random;
 
 import static ee.tenman.flashcards.web.rest.util.HeaderUtil.APPLICATION_NAME;
+import static ee.tenman.flashcards.web.rest.util.HeaderUtil.createEntityUpdateAlert;
 
 /**
  * REST controller for managing Card.
@@ -81,8 +82,15 @@ public class CardResource {
         }
         CardDTO result = cardService.save(cardDTO);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, cardDTO.getId().toString()))
+            .headers(createEntityUpdateAlert(
+                ENTITY_NAME,
+                String.format("<strong>%s</strong>", shorten(cardDTO.getFront()))
+            ))
             .body(result);
+    }
+
+    private String shorten(String input) {
+        return input != null && !input.isEmpty() && input.length() > 20 ? input.substring(0, 20) + "..." : input;
     }
 
     /**
@@ -157,7 +165,7 @@ public class CardResource {
         one.setKnown(true);
         CardDTO result = cardService.save(one);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, one.getId().toString()))
+            .headers(createEntityUpdateAlert(ENTITY_NAME, one.getId().toString()))
             .body(result);
     }
 

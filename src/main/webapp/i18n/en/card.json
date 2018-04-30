@@ -8,7 +8,7 @@
                 "createOrEditLabel": "Create or edit a Card"
             },
             "created": "A new Card is created with identifier {{ param }}",
-            "updated": "A Card is updated with identifier {{ param }}",
+            "updated": "Successfully updated \"{{ param }}\"",
             "deleted": "A Card is deleted with identifier {{ param }}",
             "delete": {
                 "question": "Are you sure you want to delete Card {{ id }}?"
