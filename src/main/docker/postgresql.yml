@@ -1,9 +1,9 @@
 version: '2'
 services:
     flashcards-postgresql:
-        image: postgres:9.6.5
-        # volumes:
-        #     - ~/volumes/jhipster/flashcards/postgresql/:/var/lib/postgresql/data/
+        image: postgres:9
+        volumes:
+            - ~/volumes/jhipster/flashcards/postgresql/:/var/lib/postgresql/data/
         environment:
             - POSTGRES_USER=flashcards
             - POSTGRES_PASSWORD=
