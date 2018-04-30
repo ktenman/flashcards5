@@ -8,7 +8,7 @@
                 "createOrEditLabel": "Lisa või muuda kaart"
             },
             "created": "Uus kaart on loodud #{{ param }}",
-            "updated": "Kaardi \"{{ param }}\" uuendamine oli edukas",
+            "updated": "Edukalt uuendatud",
             "deleted": "Card #{{ param }} on kustutatud",
             "delete": {
                 "question": "Kas oled kindel, et soovid kustutada kaarti #{{ id }}?"
