@@ -3,7 +3,8 @@
         "randomCard": {
             "next": "Järgmine",
             "flip": "Pööra",
-            "known": "Selge"
+            "known": "Selge",
+            "goodLuck": "Kivi kotti! 😏"
         }
     }
 }

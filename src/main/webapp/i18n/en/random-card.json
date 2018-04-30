@@ -3,7 +3,8 @@
         "randomCard": {
             "next": "Next",
             "flip": "Flip",
-            "known": "Known"
+            "known": "Known",
+            "goodLuck": "Good Luck! 😏"
         }
     }
 }

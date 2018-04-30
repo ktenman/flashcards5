@@ -24,6 +24,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
+import static ee.tenman.flashcards.web.rest.util.HeaderUtil.APPLICATION_NAME;
+
 /**
  * REST controller for managing Card.
  */
@@ -164,7 +166,8 @@ public class CardResource {
     public ResponseEntity<Void> markAllAsUnknown() {
         log.debug("REST request to mark all cards as unknown");
         cardService.markAllAsUnknown();
-        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, null)).build();
+        return ResponseEntity.ok()
+            .headers(HeaderUtil.createAlert(APPLICATION_NAME + ".randomCard.goodLuck", null)).build();
     }
 
 }
