@@ -109,7 +109,7 @@ public class CardService {
 
     public void markAllAsUnknown() {
         log.debug("Request to mark all cards as unknown");
-        List<Card> cards = cardRepository.findAll();
+        List<Card> cards = cardRepository.findAllCards();
         if (cards != null && !cards.isEmpty()) {
             cards.forEach(c -> {
                 c.setKnown(false);
