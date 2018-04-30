@@ -159,4 +159,12 @@ public class CardResource {
             .body(result);
     }
 
+    @GetMapping("/mark-all-unknown")
+    @Timed
+    public ResponseEntity<Void> markAllAsUnknown() {
+        log.debug("REST request to mark all cards as unknown");
+        cardService.markAllAsUnknown();
+        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, null)).build();
+    }
+
 }

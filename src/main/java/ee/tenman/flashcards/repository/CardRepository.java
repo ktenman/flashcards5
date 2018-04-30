@@ -20,6 +20,9 @@ public interface CardRepository extends JpaRepository<Card, Long> {
     List<Card> findByUserIsCurrentUser();
 
     @Query("select card from Card card where card.user.login = ?#{principal.username}")
+    List<Card> findAll();
+
+    @Query("select card from Card card where card.user.login = ?#{principal.username}")
     Page<Card> findByUserIsCurrentUser(Pageable pageable);
 
 }

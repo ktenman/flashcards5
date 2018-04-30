@@ -1,4 +1,3 @@
-<jhi-alert-error></jhi-alert-error>
 <div *ngIf="card" class="p-1">
     <div class="row pb-1 pb-sm-2 pb-md-2 pb-xl-3">
         <div class="col-auto mr-auto"></div>
@@ -40,7 +39,9 @@
         <div class="card-body">
             <h3 class="card-title">Congratulations!</h3>
             <p class="card-text">All flashcards are clear. 😉</p>
-            <a href="#" class="btn btn-success">Mark everything as unknown and restart</a>
+            <button class="btn btn-success" (click)="markAllAsUnknown()">
+                <span>Mark everything as unknown and restart</span>
+            </button>
         </div>
     </div>
 </div>

@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core'
 import {HttpErrorResponse, HttpResponse} from '@angular/common/http'
 import {Card} from '../../entities/card'
 import {RandomCardService} from './random-card.service'
-import {JhiAlertService} from 'ng-jhipster'
+import {JhiAlertService, JhiEventManager} from 'ng-jhipster'
 
 @Component({
     selector: 'jhi-random-card',
@@ -19,7 +19,8 @@ export class JhiRandomCardComponent implements OnInit {
 
     constructor(
         private randomCardService: RandomCardService,
-        private jhiAlertService: JhiAlertService
+        private jhiAlertService: JhiAlertService,
+        private eventManager: JhiEventManager
     ) {
     }
 
@@ -52,6 +53,11 @@ export class JhiRandomCardComponent implements OnInit {
                 this.next()
                 this.jhiAlertService.success('Success!', null, null)
             },
+            (res: HttpErrorResponse) => this.onError(res.message))
+    }
+
+    public markAllAsUnknown() {
+        this.randomCardService.markAllAsUnknown().subscribe(() => this.ngOnInit(),
             (res: HttpErrorResponse) => this.onError(res.message))
     }
 

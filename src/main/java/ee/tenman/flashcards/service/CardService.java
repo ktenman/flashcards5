@@ -95,4 +95,15 @@ public class CardService {
         log.debug("Request to delete Card : {}", id);
         cardRepository.delete(id);
     }
+
+    public void markAllAsUnknown() {
+        log.debug("Request to mark all cards as unknown");
+        List<Card> cards = cardRepository.findAll();
+        if (cards != null && !cards.isEmpty()) {
+            cards.forEach(c -> {
+                c.setKnown(false);
+                cardRepository.save(c);
+            });
+        }
+    }
 }
