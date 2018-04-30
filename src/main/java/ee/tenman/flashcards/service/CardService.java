@@ -47,7 +47,13 @@ public class CardService {
     public CardDTO save(CardDTO cardDTO) {
         log.debug("Request to save Card : {}", cardDTO);
         Optional<User> optionalUser = userService.getUserWithAuthorities();
-        optionalUser.ifPresent(user -> cardDTO.setUserId(user.getId()));
+        if (cardDTO.getId() == null) {
+            optionalUser.ifPresent(o -> cardDTO.setUserId(o.getId()));
+        } else {
+            if (optionalUser.isPresent() && !cardDTO.getUserLogin().equals(optionalUser.get().getLogin())) {
+                return null;
+            }
+        }
         Card card = cardMapper.toEntity(cardDTO);
         card = cardRepository.save(card);
         return cardMapper.toDto(card);
@@ -93,7 +99,12 @@ public class CardService {
      */
     public void delete(Long id) {
         log.debug("Request to delete Card : {}", id);
-        cardRepository.delete(id);
+        Optional<User> optionalUser = userService.getUserWithAuthorities();
+        if (optionalUser.isPresent()) {
+            Card card = cardRepository.findOne(id);
+            boolean allowedToDelete = card.getUser().getId().equals(optionalUser.get().getId());
+            if (allowedToDelete) cardRepository.delete(id);
+        }
     }
 
     public void markAllAsUnknown() {
