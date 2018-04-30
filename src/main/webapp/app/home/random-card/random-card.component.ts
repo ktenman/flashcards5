@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core'
+import {Component, HostListener, OnInit} from '@angular/core'
 import {HttpErrorResponse, HttpResponse} from '@angular/common/http'
 import {Card} from '../../entities/card'
 import {RandomCardService} from './random-card.service'
@@ -19,7 +19,7 @@ export class JhiRandomCardComponent implements OnInit {
 
     constructor(
         private randomCardService: RandomCardService,
-        private jhiAlertService: JhiAlertService,
+        private jhiAlertService: JhiAlertService
     ) {
     }
 
@@ -50,7 +50,6 @@ export class JhiRandomCardComponent implements OnInit {
     public known(id: number) {
         this.randomCardService.markAsKnown(id).subscribe(() => {
                 this.next()
-                this.jhiAlertService.success('Success!', null, null)
             },
             (res: HttpErrorResponse) => this.onError(res.message))
     }
@@ -58,6 +57,30 @@ export class JhiRandomCardComponent implements OnInit {
     public markAllAsUnknown() {
         this.randomCardService.markAllAsUnknown().subscribe(() => this.ngOnInit(),
             (res: HttpErrorResponse) => this.onError(res.message))
+    }
+
+    @HostListener('window:keydown', ['$event'])
+    buttons(event) {
+        switch (event.which) {
+            case 13: // enter
+            case 38: // up
+            case 40: // down
+                this.flip()
+                break
+            case 32: // space
+            case 39: // right
+                this.next()
+                break
+            case 75: // k
+            case 77: // m
+            case 83: // s
+                if (this.card) {
+                    this.known(this.card.id)
+                }
+                break
+            default:
+                return // exit this handler for other keys
+        }
     }
 
     private onError(error) {

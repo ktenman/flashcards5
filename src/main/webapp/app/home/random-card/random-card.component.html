@@ -16,7 +16,8 @@
                         </button>
                     </div>
                 </div>
-                <div class="card p-4">
+                <jhi-alert></jhi-alert>
+                <div class="card p-4 pointer" (click)="flip()">
                     <blockquote class="blockquote mb-0 card-body">
                         <h2 *ngIf="!flipped" class="text-center">
                             <jhi-latex [equation]="card.front"></jhi-latex>
@@ -53,7 +54,7 @@
                 </button>
             </div>
         </div>
-        <div class="card border-0">
+        <div class="card border-0 pointer" (click)="flip()">
             <div class="card-body">
                 <h4 *ngIf="!flipped" class="text-center">
                     <jhi-latex [equation]="card.front"></jhi-latex>
@@ -76,14 +77,26 @@
 </div>
 
 <div *ngIf="!card" class="p-1">
-    <!--<div *ngIf="!card" class="p-1">-->
-    <div class="card text-center p-3">
-        <div class="card-body">
-            <h3 class="card-title">Congratulations!</h3>
-            <p class="card-text">All flashcards are clear. 😉</p>
-            <button class="btn btn-success" (click)="markAllAsUnknown()">
-                <span>Mark everything as unknown and restart</span>
-            </button>
+    <div class="d-none d-xl-block">
+        <div class="card text-center p-3">
+            <div class="card-body">
+                <h3 class="card-title">Congratulations!</h3>
+                <p class="card-text">All flashcards are clear. 😉</p>
+                <button class="btn btn-success" (click)="markAllAsUnknown()">
+                    <span>Mark everything as unknown and restart</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="d-xl-none d-xs-block">
+        <div class="card text-center">
+            <div class="card-body">
+                <h4 class="card-title">Congratulations!</h4>
+                <p class="card-text">All flashcards are clear. 😉</p>
+                <button class="btn btn-success btn-sm" (click)="markAllAsUnknown()">
+                    <span>Mark all as unknown</span>
+                </button>
+            </div>
         </div>
     </div>
 </div>
