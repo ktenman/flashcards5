@@ -1,7 +1,9 @@
 {
     "flashcardsApp": {
         "randomCard": {
-            "next": "Next"
+            "next": "Next",
+            "flip": "Flip",
+            "known": "Known"
         }
     }
 }

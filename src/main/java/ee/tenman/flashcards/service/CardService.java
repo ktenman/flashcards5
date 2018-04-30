@@ -61,13 +61,13 @@ public class CardService {
      */
     @Transactional(readOnly = true)
     public Page<CardDTO> findAll(Pageable pageable) {
-        log.debug("Request to get all Cards");
+        log.debug("Request to get all cards");
         return cardRepository.findByUserIsCurrentUser(pageable).map(cardMapper::toDto);
     }
 
     @Transactional(readOnly = true)
-    public List<CardDTO> findAll() {
-        log.debug("Request to get all Cards");
+    public List<CardDTO> findAllEnabledAndUnknown() {
+        log.debug("Request to get all enabled and unknown cards");
         return cardRepository.findByUserIsCurrentUser().stream()
             .map(cardMapper::toDto)
             .collect(Collectors.toCollection(LinkedList::new));

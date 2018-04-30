@@ -1,7 +1,7 @@
 package ee.tenman.flashcards.web.rest;
 
-import ee.tenman.flashcards.config.Constants;
 import com.codahale.metrics.annotation.Timed;
+import ee.tenman.flashcards.config.Constants;
 import ee.tenman.flashcards.domain.User;
 import ee.tenman.flashcards.repository.UserRepository;
 import ee.tenman.flashcards.security.AuthoritiesConstants;
@@ -14,7 +14,6 @@ import ee.tenman.flashcards.web.rest.errors.LoginAlreadyUsedException;
 import ee.tenman.flashcards.web.rest.util.HeaderUtil;
 import ee.tenman.flashcards.web.rest.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -28,7 +27,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * REST controller for managing users.
@@ -42,13 +42,13 @@ import java.util.*;
  * We use a View Model and a DTO for 3 reasons:
  * <ul>
  * <li>We want to keep a lazy association between the user and the authorities, because people will
- * quite often do relationships with the user, and we don't want them to get the authorities all
+ * quite often do relationships with the user, and we don't want them to getOne the authorities all
  * the time for nothing (for performance reasons). This is the #1 goal: we should not impact our users'
  * application because of this use-case.</li>
  * <li> Not having an outer join causes n+1 requests to the database. This is not a real issue as
  * we have by default a second-level cache. This means on the first HTTP call we do the n+1 requests,
  * but then all authorities come from the cache, so in fact it's much better than doing an outer join
- * (which will get lots of data from the database, for each HTTP call).</li>
+ * (which will getOne lots of data from the database, for each HTTP call).</li>
  * <li> As this manages users, for security reasons, we'd rather have a DTO layer.</li>
  * </ul>
  * <p>
@@ -135,7 +135,7 @@ public class UserResource {
     }
 
     /**
-     * GET /users : get all users.
+     * GET /users : getOne all users.
      *
      * @param pageable the pagination information
      * @return the ResponseEntity with status 200 (OK) and with body all users
@@ -159,7 +159,7 @@ public class UserResource {
     }
 
     /**
-     * GET /users/:login : get the "login" user.
+     * GET /users/:login : getOne the "login" user.
      *
      * @param login the login of the user to find
      * @return the ResponseEntity with status 200 (OK) and with body the "login" user, or with status 404 (Not Found)
@@ -167,7 +167,7 @@ public class UserResource {
     @GetMapping("/users/{login:" + Constants.LOGIN_REGEX + "}")
     @Timed
     public ResponseEntity<UserDTO> getUser(@PathVariable String login) {
-        log.debug("REST request to get User : {}", login);
+        log.debug("REST request to getOne User : {}", login);
         return ResponseUtil.wrapOrNotFound(
             userService.getUserWithAuthoritiesByLogin(login)
                 .map(UserDTO::new));

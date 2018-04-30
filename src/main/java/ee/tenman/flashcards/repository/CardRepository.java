@@ -16,7 +16,7 @@ import java.util.List;
 @Repository
 public interface CardRepository extends JpaRepository<Card, Long> {
 
-    @Query("select card from Card card where card.user.login = ?#{principal.username}")
+    @Query("select card from Card card where card.enabled = true and card.known = false and card.user.login = ?#{principal.username}")
     List<Card> findByUserIsCurrentUser();
 
     @Query("select card from Card card where card.user.login = ?#{principal.username}")

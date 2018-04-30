@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
@@ -127,8 +128,8 @@ public class CardResource {
 
     @GetMapping("/get-random-card")
     public ResponseEntity<CardDTO> getRandomCard() {
-        log.debug("REST request to get random Card");
-        List<CardDTO> cards = cardService.findAll();
+        log.debug("REST request to get one random Card");
+        List<CardDTO> cards = cardService.findAllEnabledAndUnknown();
         CardDTO cardDTO = null;
         if (cards != null && !cards.isEmpty()) {
             Random random = new Random();
@@ -137,4 +138,13 @@ public class CardResource {
         }
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(cardDTO));
     }
+
+    @GetMapping("/get-all-cards")
+    public List<CardDTO> getAllCards() {
+        log.debug("REST request to getOne all cards");
+        List<CardDTO> cards = cardService.findAllEnabledAndUnknown();
+        Collections.shuffle(cards);
+        return cards;
+    }
+
 }

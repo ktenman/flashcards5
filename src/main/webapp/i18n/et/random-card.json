@@ -1,7 +1,9 @@
 {
     "flashcardsApp": {
         "randomCard": {
-            "next": "Järgmine"
+            "next": "Järgmine",
+            "flip": "Pööra",
+            "known": "Selge"
         }
     }
 }

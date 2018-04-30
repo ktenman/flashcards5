@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core'
 import {HttpResponse} from '@angular/common/http'
-import {Card} from '../../entities/card/card.model'
+import {Card} from '../../entities/card'
 import {RandomCardService} from './random-card.service'
 
 @Component({
@@ -14,6 +14,7 @@ export class JhiRandomCardComponent implements OnInit {
 
     card: Card
     cachedNextCard: Card
+    flipped: boolean
 
     constructor(private randomCardService: RandomCardService) {
     }
@@ -27,6 +28,7 @@ export class JhiRandomCardComponent implements OnInit {
     }
 
     public next() {
+        this.flipped = false
         this.card = this.cachedNextCard
         this.cacheNextCard()
     }
@@ -36,6 +38,10 @@ export class JhiRandomCardComponent implements OnInit {
             .subscribe((cardResponse: HttpResponse<Card>) => {
                 this.cachedNextCard = cardResponse.body
             })
+    }
+
+    public flip() {
+        this.flipped = !this.flipped
     }
 
 }

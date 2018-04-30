@@ -1,10 +1,45 @@
-<button class="btn btn-primary float-right" (click)="next()">
-    <span class="fa fa-arrow-right"></span>
-    <span jhiTranslate="flashcardsApp.randomCard.next">Next</span>
-</button>
-<h3>
-    <jhi-latex [equation]="card.front"></jhi-latex>
-</h3>
-<p>
-    <jhi-latex [equation]="card.back"></jhi-latex>
-</p>
+<div *ngIf="card" class="p-1">
+    <div class="row pb-1 pb-sm-2 pb-md-2 pb-xl-3">
+        <div class="col-auto mr-auto"></div>
+        <div class="col-auto">
+            <button class="btn btn-primary" (click)="flip()">
+                <span class="fa fa-refresh"></span>
+                <span jhiTranslate="flashcardsApp.randomCard.flip">Flip</span>
+            </button>
+            <button class="btn btn-primary" (click)="next()">
+                <span class="fa fa-arrow-right"></span>
+                <span jhiTranslate="flashcardsApp.randomCard.next">Next</span>
+            </button>
+        </div>
+    </div>
+    <div class="card p-4">
+        <blockquote class="blockquote mb-0 card-body">
+            <h2 *ngIf="!flipped" class="text-center">
+                <jhi-latex [equation]="card.front"></jhi-latex>
+            </h2>
+            <p *ngIf="flipped">
+                <jhi-latex [equation]="card.back"></jhi-latex>
+            </p>
+        </blockquote>
+    </div>
+    <div class="row pt-1 pt-sm-2 pt-md-2 pt-xl-3">
+        <div class="col-auto mr-auto"></div>
+        <div class="col-auto">
+            <button class="btn btn-outline-secondary" (click)="known()">
+                <span class="fa fa-check"></span>
+                <span jhiTranslate="flashcardsApp.randomCard.known">Known</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="!card" class="p-1">
+    <!--<div *ngIf="!card" class="p-1">-->
+    <div class="card text-center p-3">
+        <div class="card-body">
+            <h3 class="card-title">Congratulations!</h3>
+            <p class="card-text">All flashcards are clear. 😉</p>
+            <a href="#" class="btn btn-success">Mark everything as unknown and restart</a>
+        </div>
+    </div>
+</div>
