@@ -147,4 +147,16 @@ public class CardResource {
         return cards;
     }
 
+    @GetMapping("/mark-as-known/{id}")
+    @Timed
+    public ResponseEntity<CardDTO> markAsKnown(@PathVariable Long id) {
+        log.debug("REST request to mark as known Card : {}", id);
+        CardDTO one = cardService.findOne(id);
+        one.setKnown(true);
+        CardDTO result = cardService.save(one);
+        return ResponseEntity.ok()
+            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, one.getId().toString()))
+            .body(result);
+    }
+
 }

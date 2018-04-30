@@ -1,3 +1,4 @@
+<jhi-alert-error></jhi-alert-error>
 <div *ngIf="card" class="p-1">
     <div class="row pb-1 pb-sm-2 pb-md-2 pb-xl-3">
         <div class="col-auto mr-auto"></div>
@@ -25,7 +26,7 @@
     <div class="row pt-1 pt-sm-2 pt-md-2 pt-xl-3">
         <div class="col-auto mr-auto"></div>
         <div class="col-auto">
-            <button class="btn btn-outline-secondary" (click)="known()">
+            <button class="btn btn-outline-secondary" (click)="known(card.id)">
                 <span class="fa fa-check"></span>
                 <span jhiTranslate="flashcardsApp.randomCard.known">Known</span>
             </button>

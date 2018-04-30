@@ -22,4 +22,8 @@ export class RandomCardService {
             .map((res: EntityResponseType) => this.cardService.convertResponse(res))
     }
 
+    markAsKnown(id: number): Observable<EntityResponseType> {
+        return this.http.get<Card>(`${this.resourceUrl}/mark-as-known/${id}`, {observe: 'response'})
+            .map((res: EntityResponseType) => this.cardService.convertResponse(res))
+    }
 }
