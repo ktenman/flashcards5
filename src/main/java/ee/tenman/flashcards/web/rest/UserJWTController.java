@@ -1,20 +1,21 @@
 package ee.tenman.flashcards.web.rest;
 
+import com.codahale.metrics.annotation.Timed;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import ee.tenman.flashcards.security.jwt.JWTConfigurer;
 import ee.tenman.flashcards.security.jwt.TokenProvider;
 import ee.tenman.flashcards.web.rest.vm.LoginVM;
-
-import com.codahale.metrics.annotation.Timed;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
@@ -43,7 +44,7 @@ public class UserJWTController {
 
         Authentication authentication = this.authenticationManager.authenticate(authenticationToken);
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        boolean rememberMe = (loginVM.isRememberMe() == null) ? false : loginVM.isRememberMe();
+        boolean rememberMe = (loginVM.isRememberMe() == null) ? true : loginVM.isRememberMe();
         String jwt = tokenProvider.createToken(authentication, rememberMe);
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add(JWTConfigurer.AUTHORIZATION_HEADER, "Bearer " + jwt);
