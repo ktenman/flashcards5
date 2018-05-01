@@ -30,7 +30,7 @@ export class JhiSocialComponent implements OnInit, AfterViewChecked {
 
     ngAfterViewChecked(): void {
         if (this.success) {
-            this.continueSocialLoginButton.nativeElement.click()
+            setTimeout(() => this.continueSocialLoginButton.nativeElement.click(), 5000)
         }
     }
 }

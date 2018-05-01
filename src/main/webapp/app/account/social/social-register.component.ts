@@ -26,9 +26,7 @@ export class SocialRegisterComponent implements OnInit {
         this.route.queryParams.subscribe((queryParams) => {
             this.success = queryParams['success']
             if (this.success) {
-                setTimeout(() => {
-                    this.continueSocialLoginButton.nativeElement.click()
-                }, 2000)
+                setTimeout(() => this.continueSocialLoginButton.nativeElement.click(), 5000)
             }
         })
         this.route.params.subscribe((params) => {
