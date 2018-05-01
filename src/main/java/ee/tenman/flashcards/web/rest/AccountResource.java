@@ -1,7 +1,6 @@
 package ee.tenman.flashcards.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
-import ee.tenman.flashcards.domain.Card;
 import ee.tenman.flashcards.domain.User;
 import ee.tenman.flashcards.repository.CardRepository;
 import ee.tenman.flashcards.repository.UserRepository;
@@ -13,7 +12,6 @@ import ee.tenman.flashcards.web.rest.errors.*;
 import ee.tenman.flashcards.web.rest.vm.KeyAndPasswordVM;
 import ee.tenman.flashcards.web.rest.vm.ManagedUserVM;
 import org.apache.commons.lang3.StringUtils;
-import org.simpleflatmapper.csv.CsvParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -21,10 +19,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.Optional;
 
 /**
@@ -113,38 +107,7 @@ public class AccountResource {
         UserDTO userDTO = userService.getUserWithAuthorities()
             .map(UserDTO::new)
             .orElseThrow(() -> new InternalServerErrorException("User could not be found"));
-//        Optional<User> optionalUser = userRepository.findOneByLogin(userDTO.getLogin());
-//        if (optionalUser.isPresent()) {
-//            User user = optionalUser.get();
-//            saveDefaultCards(user);
-//        }
         return userDTO;
-    }
-
-    private void saveDefaultCards(User user) {
-        try {
-            InputStream inputStream =
-                getClass().getClassLoader().getResourceAsStream("flashcards.csv");
-            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream ));
-            CsvParser
-                .separator(';')
-                .stream(reader)
-                .forEach((String[] s) -> {
-                    Card card = new Card();
-                    try{
-                        card.setFront(s[0]);
-                        card.setBack(s[1]);
-                        card.setUser(user);
-                        card.setKnown(false);
-                        card.setEnabled(true);
-                        cardRepository.save(card);
-                    } catch(ArrayIndexOutOfBoundsException e){
-                        throw new ArrayIndexOutOfBoundsException("Wrong array {}" + e);
-                    }
-                });
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     /**
