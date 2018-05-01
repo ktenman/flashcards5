@@ -135,7 +135,9 @@ export class CardComponent implements OnInit, OnDestroy {
     private onSuccess(data, headers) {
         this.links = this.parseLinks.parse(headers.get('link'))
         this.totalItems = headers.get('X-Total-Count')
-        data.forEach((e) => this.cards.push(e))
+        for (let i = 0; i < data.length; i++) {
+            this.cards.push(data[i])
+        }
         this.isSaving = false
     }
 
