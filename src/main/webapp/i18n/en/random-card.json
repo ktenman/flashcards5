@@ -4,7 +4,12 @@
             "next": "Next",
             "flip": "Flip",
             "known": "Known",
-            "goodLuck": "Good Luck! 😏"
+            "goodLuck": "Good Luck! 😏",
+            "lastCard": "Last card 👍",
+            "congratulations": "Congratulations!",
+            "allCardsAreClear": "All flashcards are clear. 😉",
+            "markEverythingAsUnknownAndRestart": "Mark everything as unknown and restart",
+            "markAllAsUnknown": "Mark all as unknown"
         }
     }
 }

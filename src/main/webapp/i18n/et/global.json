@@ -129,5 +129,6 @@
         "emailexists": "E-posti aadress on juba kasutuses!",
         "idexists": "Uue {{ entityName }} ID välja väärtus peab olema tühi"
     },
-    "footer": "2018"
+    "footer": "2018",
+    "loading": "Laeb..."
 }

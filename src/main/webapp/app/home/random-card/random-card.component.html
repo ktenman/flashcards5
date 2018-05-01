@@ -10,13 +10,16 @@
                             <span class="fa fa-refresh"></span>
                             <span jhiTranslate="flashcardsApp.randomCard.flip">Flip</span>
                         </button>
-                        <button class="btn btn-primary" (click)="next()">
+                        <button *ngIf="!lastCard" class="btn btn-primary" (click)="next()">
                             <span class="fa fa-arrow-right"></span>
                             <span jhiTranslate="flashcardsApp.randomCard.next">Next</span>
                         </button>
                     </div>
                 </div>
                 <jhi-alert></jhi-alert>
+                <div *ngIf="lastCard" class="alert alert-warning" jhiTranslate="flashcardsApp.randomCard.lastCard">
+                    Last card 👍
+                </div>
                 <div class="card p-4 pointer" (click)="flip()">
                     <blockquote class="blockquote mb-0 card-body">
                         <h2 *ngIf="!flipped" class="text-center">
@@ -48,13 +51,16 @@
                     <span class="fa fa-refresh"></span>
                     <span jhiTranslate="flashcardsApp.randomCard.flip">Flip</span>
                 </button>
-                <button class="btn btn-primary btn-sm" (click)="next()">
+                <button *ngIf="!lastCard" class="btn btn-primary btn-sm" (click)="next()">
                     <span class="fa fa-arrow-right"></span>
                     <span jhiTranslate="flashcardsApp.randomCard.next">Next</span>
                 </button>
             </div>
         </div>
         <jhi-alert></jhi-alert>
+        <div *ngIf="lastCard" class="alert alert-warning" jhiTranslate="flashcardsApp.randomCard.lastCard">
+            Last card 👍
+        </div>
         <div class="card border-0 pointer" (click)="flip()">
             <div class="card-body">
                 <h4 *ngIf="!flipped" class="text-center">
@@ -81,10 +87,13 @@
     <div class="d-none d-xl-block">
         <div class="card text-center p-3">
             <div class="card-body">
-                <h3 class="card-title">Congratulations!</h3>
-                <p class="card-text">All flashcards are clear. 😉</p>
+                <h3 class="card-title" jhiTranslate="flashcardsApp.randomCard.congratulations">Congratulations!</h3>
+                <p class="card-text" jhiTranslate="flashcardsApp.randomCard.allCardsAreClear">All flashcards are clear.
+                    😉</p>
                 <button class="btn btn-success" (click)="markAllAsUnknown()">
-                    <span>Mark everything as unknown and restart</span>
+                    <span jhiTranslate="flashcardsApp.randomCard.markEverythingAsUnknownAndRestart">
+                        Mark everything as unknown and restart
+                    </span>
                 </button>
             </div>
         </div>
@@ -92,10 +101,12 @@
     <div class="d-xl-none d-xs-block">
         <div class="card text-center">
             <div class="card-body">
-                <h4 class="card-title">Congratulations!</h4>
-                <p class="card-text">All flashcards are clear. 😉</p>
+                <h4 class="card-title" jhiTranslate="flashcardsApp.randomCard.congratulations">Congratulations!</h4>
+                <p class="card-text" jhiTranslate="flashcardsApp.randomCard.allCardsAreClear">
+                    All flashcards are clear. 😉
+                </p>
                 <button class="btn btn-success btn-sm" (click)="markAllAsUnknown()">
-                    <span>Mark all as unknown</span>
+                    <span jhiTranslate="flashcardsApp.randomCard.markAllAsUnknown">Mark all as unknown</span>
                 </button>
             </div>
         </div>

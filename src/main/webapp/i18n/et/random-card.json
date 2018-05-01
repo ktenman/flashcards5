@@ -4,7 +4,12 @@
             "next": "Järgmine",
             "flip": "Pööra",
             "known": "Selge",
-            "goodLuck": "Kivi kotti! 😏"
+            "goodLuck": "Kivi kotti! 😏",
+            "lastCard": "Viimane kaart 👍",
+            "congratulations": "Palju õnne!",
+            "allCardsAreClear": "Kõik sõnaseltuskaardid on selgeks õpitud. 😉",
+            "markEverythingAsUnknownAndRestart": "Alusta uuesti õppimist",
+            "markAllAsUnknown": "Alusta uuesti õppimist"
         }
     }
 }

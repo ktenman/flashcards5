@@ -3,6 +3,7 @@ import {HttpErrorResponse, HttpResponse} from '@angular/common/http'
 import {Card} from '../../entities/card'
 import {RandomCardService} from './random-card.service'
 import {JhiAlertService} from 'ng-jhipster'
+import {TranslateService} from '@ngx-translate/core'
 
 @Component({
     selector: 'jhi-random-card',
@@ -16,19 +17,27 @@ export class JhiRandomCardComponent implements OnInit {
     card: Card
     cachedNextCard: Card
     flipped: boolean
+    tries: number
+    lastCard: boolean
 
     constructor(
         private randomCardService: RandomCardService,
-        private jhiAlertService: JhiAlertService
+        private jhiAlertService: JhiAlertService,
+        private translateService: TranslateService
     ) {
+        this.tries = 0
+        this.card = {
+            front: `${this.translateService.instant('loading')}`
+        }
     }
 
     ngOnInit() {
+        this.lastCard = false
         this.randomCardService.get()
             .subscribe((cardResponse: HttpResponse<Card>) => {
                 this.card = cardResponse.body
-            })
-        this.cacheNextCard()
+                this.cacheNextCard()
+            }, () => this.card = null)
     }
 
     public next() {
@@ -39,7 +48,18 @@ export class JhiRandomCardComponent implements OnInit {
 
     public cacheNextCard() {
         this.randomCardService.get()
-            .subscribe((cardResponse: HttpResponse<Card>) => this.cachedNextCard = cardResponse.body,
+            .subscribe((cardResponse: HttpResponse<Card>) => {
+                    this.cachedNextCard = cardResponse.body
+                    if (this.cachedNextCard.id === this.card.id && this.tries < 10) {
+                        this.tries++
+                        if (this.tries === 10) {
+                            this.lastCard = true
+                        }
+                        this.cacheNextCard()
+                    } else {
+                        this.tries = 0
+                    }
+                },
                 (res: HttpErrorResponse) => this.onError(res.message))
     }
 

@@ -130,5 +130,6 @@
         "emailexists": "Email is already in use!",
         "idexists": "A new {{ entityName }} cannot already have an ID"
     },
-    "footer": "2018"
+    "footer": "2018",
+    "loading": "Loading..."
 }
