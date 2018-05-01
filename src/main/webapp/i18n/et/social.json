@@ -2,7 +2,7 @@
     "social": {
         "btnLabel": "{{ label }}",
         "register": {
-            "title": "Registreeruge {{ label }} kaudu",
+            "title": "Suunamine...",
             "errorTitle": "Registreerumine välise kontoga",
             "messages": {
                 "success": "<strong>Registreering salvestatud!</strong>",

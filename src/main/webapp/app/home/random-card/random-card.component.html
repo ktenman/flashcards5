@@ -31,7 +31,16 @@
                     </blockquote>
                 </div>
                 <div class="row pt-1 pt-sm-2 pt-md-2 pt-xl-3">
-                    <div class="col-auto mr-auto"></div>
+                    <div class="col-auto mr-auto">
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'card/'+ card.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-outline-secondary">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                    </div>
                     <div class="col-auto">
                         <button class="btn btn-outline-secondary" (click)="known(card.id)">
                             <span class="fa fa-check"></span>
@@ -47,11 +56,11 @@
         <div class="row pb-1 pb-sm-2 pb-md-2 pb-xl-3">
             <div class="col-auto mr-auto"></div>
             <div class="col-auto">
-                <button class="btn btn-primary btn-sm" (click)="flip()">
+                <button class="btn btn-primary" (click)="flip()">
                     <span class="fa fa-refresh"></span>
                     <span jhiTranslate="flashcardsApp.randomCard.flip">Flip</span>
                 </button>
-                <button *ngIf="!lastCard" class="btn btn-primary btn-sm" (click)="next()">
+                <button *ngIf="!lastCard" class="btn btn-primary" (click)="next()">
                     <span class="fa fa-arrow-right"></span>
                     <span jhiTranslate="flashcardsApp.randomCard.next">Next</span>
                 </button>
@@ -61,18 +70,29 @@
         <div *ngIf="lastCard" class="alert alert-warning" jhiTranslate="flashcardsApp.randomCard.lastCard">
             Last card 👍
         </div>
-        <!--<div class="card border-0 pointer" (click)="flip()">-->
-        <!--<div class="card-body">-->
-                <h4 *ngIf="!flipped" class="text-center">
-                    <jhi-latex [equation]="card.front"></jhi-latex>
-                </h4>
-                <p *ngIf="flipped">
-                    <jhi-latex [equation]="card.back"></jhi-latex>
-                </p>
-        <!--</div>-->
-        <!--</div>-->
+        <div *ngIf="!flipped" class="text-center p-5 pointer" (click)="flip()">
+            <div class="card border-0">
+                <div class="card-body">
+                    <h4>
+                        <jhi-latex [equation]="card.front"></jhi-latex>
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <p *ngIf="flipped" class="pointer" (click)="flip()">
+            <jhi-latex [equation]="card.back"></jhi-latex>
+        </p>
         <div class="row pt-1 pt-sm-2 pt-md-2 pt-xl-3">
-            <div class="col-auto mr-auto"></div>
+            <div class="col-auto mr-auto">
+                <button type="submit"
+                        [routerLink]="['/', { outlets: { popup: 'card/'+ card.id + '/edit'} }]"
+                        replaceUrl="true"
+                        queryParamsHandling="merge"
+                        class="btn btn-outline-secondary btn-sm">
+                    <span class="fa fa-pencil"></span>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                </button>
+            </div>
             <div class="col-auto">
                 <button class="btn btn-outline-secondary btn-sm" (click)="known(card.id)">
                     <span class="fa fa-check"></span>

@@ -2,7 +2,7 @@
     "social": {
         "btnLabel": "{{ label }}",
         "register": {
-            "title": "Register with {{ label }}",
+            "title": "Registering...",
             "errorTitle": "Register with an external account",
             "messages": {
                 "success": "<strong>Registration saved!</strong>",
