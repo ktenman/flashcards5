@@ -32,7 +32,7 @@
                     jhiTranslate="flashcardsApp.card.known">Known</span><span class="fa fa-sort"></span></th>
                 <th class="d-none d-lg-table-cell" jhiSortBy="enabled"><span jhiTranslate="flashcardsApp.card.enabled">Enabled</span><span
                     class="fa fa-sort"></span></th>
-                <th class="d-none d-sm-table-cell"></th>
+                <th></th>
             </tr>
             </thead>
             <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']"
@@ -66,7 +66,7 @@
                     <div class="btn-group-vertical btn-group-toggle">
                         <button type="submit"
                                 [routerLink]="['../card', card.id ]"
-                                class="d-sm-none btn btn-outline-info btn-sm">
+                                class="d-md-none btn btn-outline-info btn-sm">
                             <span class="fa fa-eye"></span>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
@@ -74,7 +74,7 @@
                                 [routerLink]="['/', { outlets: { popup: 'card/'+ card.id + '/edit'} }]"
                                 replaceUrl="true"
                                 queryParamsHandling="merge"
-                                class="btn d-none d-sm-inline btn-outline-primary btn-sm">
+                                class="btn d-none d-md-inline btn-outline-primary btn-sm">
                             <span class="fa fa-pencil"></span>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
