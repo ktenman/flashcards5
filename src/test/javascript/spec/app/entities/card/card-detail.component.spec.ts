@@ -1,12 +1,13 @@
 /* tslint:disable max-line-length */
-import { ComponentFixture, TestBed, async } from '@angular/core/testing';
-import { HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing'
+import {HttpResponse} from '@angular/common/http'
+import {Observable} from 'rxjs/Observable'
 
-import { FlashcardsTestModule } from '../../../test.module';
-import { CardDetailComponent } from '../../../../../../main/webapp/app/entities/card/card-detail.component';
-import { CardService } from '../../../../../../main/webapp/app/entities/card/card.service';
-import { Card } from '../../../../../../main/webapp/app/entities/card/card.model';
+import {FlashcardsTestModule} from '../../../test.module'
+import {CardDetailComponent} from '../../../../../../main/webapp/app/entities/card/card-detail.component'
+import {CardService} from '../../../../../../main/webapp/app/entities/card/card.service'
+import {Card} from '../../../../../../main/webapp/app/entities/card/card.model'
+import {CardComponent} from '../../../../../../main/webapp/app/entities/card'
 
 describe('Component Tests', () => {
 
@@ -20,7 +21,8 @@ describe('Component Tests', () => {
                 imports: [FlashcardsTestModule],
                 declarations: [CardDetailComponent],
                 providers: [
-                    CardService
+                    CardService,
+                    CardComponent
                 ]
             })
             .overrideTemplate(CardDetailComponent, '')
