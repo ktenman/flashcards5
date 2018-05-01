@@ -1,15 +1,19 @@
 import {Component, OnDestroy, OnInit} from '@angular/core'
-import {ActivatedRoute} from '@angular/router'
+import {ActivatedRoute, Router} from '@angular/router'
 import {HttpResponse} from '@angular/common/http'
 import {Subscription} from 'rxjs/Subscription'
 import {JhiDataUtils, JhiEventManager} from 'ng-jhipster'
 
 import {Card} from './card.model'
 import {CardService} from './card.service'
+import {CardComponent} from './card.component'
 
 @Component({
     selector: 'jhi-card-detail',
-    templateUrl: './card-detail.component.html'
+    templateUrl: './card-detail.component.html',
+    styleUrls: [
+        'card-detail.component.scss'
+    ]
 })
 export class CardDetailComponent implements OnInit, OnDestroy {
 
@@ -21,7 +25,9 @@ export class CardDetailComponent implements OnInit, OnDestroy {
         private eventManager: JhiEventManager,
         private dataUtils: JhiDataUtils,
         private cardService: CardService,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private router: Router,
+        private cardComponent: CardComponent
     ) {
     }
 
@@ -48,7 +54,7 @@ export class CardDetailComponent implements OnInit, OnDestroy {
     }
 
     previousState() {
-        window.history.back()
+        this.router.navigate(['card'])
     }
 
     ngOnDestroy() {
@@ -61,5 +67,15 @@ export class CardDetailComponent implements OnInit, OnDestroy {
             'cardListModification',
             (response) => this.load(this.card.id)
         )
+    }
+
+    changeEnabled(card: Card, enabled: boolean) {
+        card.enabled = !enabled
+        this.cardComponent.save(card)
+    }
+
+    changeKnown(card: Card, known: boolean) {
+        card.known = !known
+        this.cardComponent.save(card)
     }
 }

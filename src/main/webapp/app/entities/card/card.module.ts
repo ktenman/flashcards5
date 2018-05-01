@@ -44,7 +44,8 @@ const ENTITY_STATES = [
     ],
     providers: [
         CardService,
-        CardPopupService
+        CardPopupService,
+        CardComponent
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

@@ -65,10 +65,16 @@
                 <td class="text-right">
                     <div class="btn-group-vertical btn-group-toggle">
                         <button type="submit"
+                                [routerLink]="['../card', card.id ]"
+                                class="d-sm-none btn btn-outline-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
                                 [routerLink]="['/', { outlets: { popup: 'card/'+ card.id + '/edit'} }]"
                                 replaceUrl="true"
                                 queryParamsHandling="merge"
-                                class="btn btn-outline-primary btn-xs">
+                                class="btn d-none d-sm-inline btn-outline-primary btn-sm">
                             <span class="fa fa-pencil"></span>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
@@ -76,7 +82,7 @@
                                 [routerLink]="['/', { outlets: { popup: 'card/'+ card.id + '/delete'} }]"
                                 replaceUrl="true"
                                 queryParamsHandling="merge"
-                                class="btn btn-outline-danger btn-xs">
+                                class="btn btn-outline-danger btn-sm">
                             <span class="fa fa-remove"></span>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
                         </button>

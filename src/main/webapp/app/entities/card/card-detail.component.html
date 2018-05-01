@@ -1,30 +1,4 @@
 <div *ngIf="card">
-    <h2><span jhiTranslate="flashcardsApp.card.detail.title">Card</span> {{card.id}}</h2>
-    <hr>
-    <jhi-alert-error></jhi-alert-error>
-    <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="flashcardsApp.card.front">Front</span></dt>
-        <dd>
-            <span>{{card.front}}</span>
-        </dd>
-        <dt><span jhiTranslate="flashcardsApp.card.back">Back</span></dt>
-        <dd>
-            <jhi-latex [equation]="card.back"></jhi-latex>
-        </dd>
-        <dt><span jhiTranslate="flashcardsApp.card.known">Known</span></dt>
-        <dd>
-            <span>{{card.known}}</span>
-        </dd>
-        <dt><span jhiTranslate="flashcardsApp.card.enabled">Enabled</span></dt>
-        <dd>
-            <span>{{card.enabled}}</span>
-        </dd>
-        <dt><span jhiTranslate="flashcardsApp.card.user">User</span></dt>
-        <dd>
-            {{card.userLogin}}
-        </dd>
-    </dl>
-
     <button type="submit"
             (click)="previousState()"
             class="btn btn-info">
@@ -38,4 +12,42 @@
             class="btn btn-primary">
         <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
     </button>
+    <hr>
+    <jhi-alert></jhi-alert>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="flashcardsApp.card.front">Front</span></dt>
+        <dd>
+            <span>{{card.front}}</span>
+        </dd>
+        <dt><span jhiTranslate="flashcardsApp.card.back">Back</span></dt>
+        <dd>
+            <jhi-latex [equation]="card.back"></jhi-latex>
+        </dd>
+        <dt (click)="changeKnown(card, card.known)">
+            <span jhiTranslate="flashcardsApp.card.known">Known</span>
+        </dt>
+        <dd (click)="changeKnown(card, card.known)">
+            <div class="checkbox pointer">
+                <input class="pointer" (ngModelChange)="changeKnown(card, card.known)"
+                       id="field_known_{{card.id}}" type="checkbox"
+                       name="field_known_{{card.id}}"
+                       [ngModel]="card.known">
+                <label for="field_known_{{card.id}}"></label>
+            </div>
+        </dd>
+        <dt (click)="changeEnabled(card, card.enabled)">
+            <span jhiTranslate="flashcardsApp.card.enabled">Enabled</span>
+        </dt>
+        <dd (click)="changeEnabled(card, card.enabled)">
+            <div class="checkbox pointer">
+                <input class="pointer" (ngModelChange)="changeEnabled(card, card.enabled)"
+                       id="field_grouping_{{card.id}}" type="checkbox"
+                       name="field_grouping_{{card.id}}"
+                       [ngModel]="card.enabled">
+                <label for="field_grouping_{{card.id}}"></label>
+            </div>
+        </dd>
+    </dl>
+
 </div>
