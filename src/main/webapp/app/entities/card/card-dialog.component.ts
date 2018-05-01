@@ -9,7 +9,7 @@ import {JhiAlertService, JhiDataUtils, JhiEventManager} from 'ng-jhipster'
 import {Card} from './card.model'
 import {CardPopupService} from './card-popup.service'
 import {CardService} from './card.service'
-import {User, UserService} from '../../shared'
+import {User} from '../../shared'
 
 @Component({
     selector: 'jhi-card-dialog',
@@ -20,24 +20,17 @@ export class CardDialogComponent implements OnInit {
     card: Card
     isSaving: boolean
 
-    users: User[]
-
     constructor(
         public activeModal: NgbActiveModal,
         private dataUtils: JhiDataUtils,
         private jhiAlertService: JhiAlertService,
         private cardService: CardService,
-        private userService: UserService,
         private eventManager: JhiEventManager
     ) {
     }
 
     ngOnInit() {
         this.isSaving = false
-        this.userService.query()
-            .subscribe((res: HttpResponse<User[]>) => {
-                this.users = res.body
-            }, (res: HttpErrorResponse) => this.onError(res.message))
     }
 
     byteSize(field) {
