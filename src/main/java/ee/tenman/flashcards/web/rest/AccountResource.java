@@ -104,10 +104,9 @@ public class AccountResource {
     @GetMapping("/account")
     @Timed
     public UserDTO getAccount() {
-        UserDTO userDTO = userService.getUserWithAuthorities()
+        return userService.getUserWithAuthorities()
             .map(UserDTO::new)
             .orElseThrow(() -> new InternalServerErrorException("User could not be found"));
-        return userDTO;
     }
 
     /**
