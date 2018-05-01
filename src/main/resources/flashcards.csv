@@ -140,7 +140,7 @@ Kõik tuletusreeglid on kujul $A \rightarrow wB$ ja $A \rightarrow w$, kus w on 
 Märkus:
 $A,B \in V$"
 Chomsky normaalkujuline kontekstivaba grammatika;"Mistahes tühja sõna mittesisaldav kontekstivaba keel on genereeritav grammatika $G = (V,T,P,S)$ poolt, mille kõik tuletusreeglid on kujul:
-$A ? BC$ või $A ? a$, kus:
+$A \rightarrow BC$ või $A \rightarrow a$, kus:
 $a \in T$
 $A,B,C \in V$"
 Greibachi normaalkujuline kontekstivaba grammatika;"Mistahes tühja sõna mitte sisaldav kontekstivaba keel genereeritakse mingi grammatika poolt, milles kõik tuletusreeglid on kujul:
