@@ -5,6 +5,7 @@
             "home": {
                 "title": "Kaardid",
                 "createLabel": "Lisa uus kaart",
+                "shortCreateLabel": "Lisa",
                 "createOrEditLabel": "Lisa või muuda kaart"
             },
             "created": "Uus kaart on loodud #{{ param }}",

@@ -4,8 +4,11 @@
         <button class="btn btn-primary float-right jh-create-entity create-card"
                 [routerLink]="['/', { outlets: { popup: ['card-new'] } }]">
             <span class="fa fa-plus"></span>
-            <span jhiTranslate="flashcardsApp.card.home.createLabel">
-            Create new Card
+            <span class="d-none d-sm-inline" jhiTranslate="flashcardsApp.card.home.createLabel">
+                Create new Card
+            </span>
+            <span class="d-sm-none" jhiTranslate="flashcardsApp.card.home.shortCreateLabel">
+                Create
             </span>
         </button>
     </h2>
@@ -19,13 +22,16 @@
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
                 <th jhiSortBy="front"><span jhiTranslate="flashcardsApp.card.front">Front</span> <span
                     class="fa fa-sort"></span></th>
-                <th jhiSortBy="back"><span jhiTranslate="flashcardsApp.card.back">Back</span> <span
+                <th class="d-none d-md-table-cell" jhiSortBy="back"><span
+                    jhiTranslate="flashcardsApp.card.back">Back</span> <span
                     class="fa fa-sort"></span></th>
-                <th jhiSortBy="known"><span jhiTranslate="flashcardsApp.card.known">Known</span> <span
+                <th class="d-none d-lg-table-cell" jhiSortBy="known"><span
+                    jhiTranslate="flashcardsApp.card.known">Known</span> <span
                     class="fa fa-sort"></span></th>
-                <th jhiSortBy="enabled"><span jhiTranslate="flashcardsApp.card.enabled">Enabled</span> <span
+                <th class="d-none d-lg-table-cell" jhiSortBy="enabled"><span jhiTranslate="flashcardsApp.card.enabled">Enabled</span>
+                    <span
                     class="fa fa-sort"></span></th>
-                <th></th>
+                <th class="d-none d-sm-table-cell"></th>
             </tr>
             </thead>
             <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']"
@@ -34,10 +40,10 @@
                 <td>
                     <jhi-latex [equation]="card.front"></jhi-latex>
                 </td>
-                <td>
+                <td class="d-none d-md-table-cell">
                     <jhi-latex [equation]="card.back"></jhi-latex>
                 </td>
-                <td class="checkbox d-none d-sm-table-cell pointer" (click)="changeKnown(card, card.known)">
+                <td class="checkbox pointer d-none d-lg-table-cell" (click)="changeKnown(card, card.known)">
                     <div class="checkbox pointer">
                         <input class="pointer" (ngModelChange)="changeKnown(card, card.known)"
                                id="field_known_{{card.id}}" type="checkbox"
@@ -46,7 +52,7 @@
                         <label for="field_known_{{card.id}}"></label>
                     </div>
                 </td>
-                <td class="checkbox d-none d-sm-table-cell pointer" (click)="changeEnabled(card, card.enabled)">
+                <td class="checkbox pointer d-none d-lg-table-cell" (click)="changeEnabled(card, card.enabled)">
                     <div class="checkbox pointer">
                         <input class="pointer" (ngModelChange)="changeEnabled(card, card.enabled)"
                                id="field_grouping_{{card.id}}" type="checkbox"

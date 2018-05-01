@@ -5,6 +5,7 @@
             "home": {
                 "title": "Cards",
                 "createLabel": "Create a new Card",
+                "shortCreateLabel": "Create",
                 "createOrEditLabel": "Create or edit a Card"
             },
             "created": "A new Card is created with identifier {{ param }}",
