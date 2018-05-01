@@ -20,16 +20,17 @@
         <table class="table table-hover">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
-                <th jhiSortBy="front"><span jhiTranslate="flashcardsApp.card.front">Front</span> <span
+                <th class="d-none d-sm-table-cell" jhiSortBy="front"><span
+                    jhiTranslate="flashcardsApp.card.front">Front</span><span
+                    class="fa fa-sort"></span></th>
+                <th class="d-sm-none" jhiSortBy="front"><span jhiTranslate="flashcardsApp.card.front">Front</span> <span
                     class="fa fa-sort"></span></th>
                 <th class="d-none d-md-table-cell" jhiSortBy="back"><span
-                    jhiTranslate="flashcardsApp.card.back">Back</span> <span
+                    jhiTranslate="flashcardsApp.card.back">Back</span><span
                     class="fa fa-sort"></span></th>
                 <th class="d-none d-lg-table-cell" jhiSortBy="known"><span
-                    jhiTranslate="flashcardsApp.card.known">Known</span> <span
-                    class="fa fa-sort"></span></th>
-                <th class="d-none d-lg-table-cell" jhiSortBy="enabled"><span jhiTranslate="flashcardsApp.card.enabled">Enabled</span>
-                    <span
+                    jhiTranslate="flashcardsApp.card.known">Known</span><span class="fa fa-sort"></span></th>
+                <th class="d-none d-lg-table-cell" jhiSortBy="enabled"><span jhiTranslate="flashcardsApp.card.enabled">Enabled</span><span
                     class="fa fa-sort"></span></th>
                 <th class="d-none d-sm-table-cell"></th>
             </tr>
