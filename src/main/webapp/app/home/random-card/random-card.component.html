@@ -70,14 +70,10 @@
         <div *ngIf="lastCard" class="alert alert-warning" jhiTranslate="flashcardsApp.randomCard.lastCard">
             Last card 👍
         </div>
-        <div *ngIf="!flipped" class="text-center p-5 pointer" (click)="flip()">
-            <div class="card border-0">
-                <div class="card-body">
-                    <h4>
-                        <jhi-latex [equation]="card.front"></jhi-latex>
-                    </h4>
-                </div>
-            </div>
+        <div *ngIf="!flipped" class="text-center pt-5 pb-5 pointer" (click)="flip()">
+            <h4>
+                <jhi-latex [equation]="card.front"></jhi-latex>
+            </h4>
         </div>
         <p *ngIf="flipped" class="pointer" (click)="flip()">
             <jhi-latex [equation]="card.back"></jhi-latex>
