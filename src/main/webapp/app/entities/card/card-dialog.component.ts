@@ -4,7 +4,7 @@ import {HttpErrorResponse, HttpResponse} from '@angular/common/http'
 
 import {Observable} from 'rxjs/Observable'
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap'
-import {JhiAlertService, JhiDataUtils, JhiEventManager} from 'ng-jhipster'
+import {JhiDataUtils, JhiEventManager} from 'ng-jhipster'
 
 import {Card} from './card.model'
 import {CardPopupService} from './card-popup.service'
@@ -23,7 +23,6 @@ export class CardDialogComponent implements OnInit {
     constructor(
         public activeModal: NgbActiveModal,
         private dataUtils: JhiDataUtils,
-        private jhiAlertService: JhiAlertService,
         private cardService: CardService,
         private eventManager: JhiEventManager
     ) {
@@ -77,10 +76,6 @@ export class CardDialogComponent implements OnInit {
 
     private onSaveError() {
         this.isSaving = false
-    }
-
-    private onError(error: any) {
-        this.jhiAlertService.error(error.message, null, null)
     }
 }
 
