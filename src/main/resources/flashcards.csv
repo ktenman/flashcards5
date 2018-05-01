@@ -32,12 +32,12 @@ ekvivalentsiseose indeks;Mistahes ekvivalentsiseose $\rho$ <strong>ekvivalentsik
 suunatud (mittesuunatud) graaf;"Graaf koosneb tippudest ja neid ühendatavatest servadest $G = (V,E)$, kus $V$ (tipud) on MITTETÜHI hulk ning $E$ (servad) hulk, mille elementideks on hulga $V$ KAHEELEMENDILISED alamhulgad
 
 suunatud (orienteeritud) graaf:
- kõik servad on orienteeritud
- $V$ elemendid on kujutatud punktidena ning $E$ elementide vastavaid punkte ühendavate nooltena
+• kõik servad on orienteeritud
+• $V$ elemendid on kujutatud punktidena ning $E$ elementide vastavaid punkte ühendavate nooltena
 
 mittesuunatud (orienteerimata) graaf:
- graaf, mille kõik servad on orienteerimata (serva jaoks tippude järjekord on ebaoluline)
- kui binaarne seos $E$ on sümmeetriline, siis noolte asemel jooned"
+• graaf, mille kõik servad on orienteerimata (serva jaoks tippude järjekord on ebaoluline)
+• kui binaarne seos $E$ on sümmeetriline, siis noolte asemel jooned"
 alamgraaf;Graafi $G=(V,E)$ alamgraafiks nimetatakse graafi $G'=(V',E')$, mis on saadud graafist $G=(V,E)$ teatava hulga tippude ja servade kustutamisel või, kui $V'\subseteq V$ ja $E'\subseteq E\cap(V'\times V)$
 sidus graaf;"1) Sidusas graafis saab IGAST tipust mööda servi liikuda igasse TEISE tippu.
 2) Mittesuunatud graaf, mida ei saa esitada KAHE ALAMGRAAFI LÕIKUMATU ühendina."
@@ -59,7 +59,7 @@ mittedeterministlik lõplik automaat;"Viisik $M=(Q,\Sigma,\delta,q_0,F)$, kus:
 Üleminekuseisund ei pruugi olla üheselt määratud:
 1. automaat võib üle minna erinevatesse seisunditesse
 2. automaat võib blokeeruda, kui ei lähe mitte mingisse seisundisse"
-?-üleminekutega lõplik automaat;"Automaat $(Q,\Sigma,\delta,q_0,F)$ võib uude seisundisse üle minna <strong>automaatselt</strong>, ilma sisendsümbolit saamata.
+$\varepsilon$-üleminekutega lõplik automaat;"Automaat $(Q,\Sigma,\delta,q_0,F)$ võib uude seisundisse üle minna <strong>automaatselt</strong>, ilma sisendsümbolit saamata.
 1) $Q\ -$ mingi lõplik seisundite hulk
 2) $\Sigma\ -$ mingi lõplik sisendalfabeet
 3) $\delta: Q × (\Sigma \cup \big\{\epsilon\big\}) \rightarrow 2^Q\ -$ üleminekufunktsioon, mis käsitleb sisendsümbolina ka TÜHJA SÕNA
@@ -92,13 +92,13 @@ Sisendsõna $w=a_1\ldots a_n$ rakendamisel saame Moore'i automaadis väljundsõn
 $\lambda(q_0)\ldots\lambda(q_n)$, kusjuures:
 $q_{i-1}\cdot a_i=q_i,\ i=1,\ldots,n$."
 regulaarne avaldis;"Regulaarsed avaldised üle tähestiku $\Sigma$ defineeritakse rekursiivselt:
-1) ?, $\epsilon$ ja iga $a \in \Sigma$ on regulaarsed avaldised,
+1) $\varnothing$, $\epsilon$ ja iga $a \in \Sigma$ on regulaarsed avaldised,
 2) Kui $r$ ja $s$ on regulaarsed avaldised, siis ka $r+s$, $r·s$ ja $r^*$ on regulaarsed avaldised."
 üldistatud mittedetereministlik automaat;"Viisik $(Q, \Sigma, \delta, q_0, q_l)$, kus:
 1) $Q\ -$ mingi lõplik seisundite hulk
 2) $\Sigma\ -$ mingi lõplik sisendalfabeet
 3) $\delta\ -$ üleminekufuntksioon, kus $R$ on regulaarsete avaldiste hulk alfabeedis $\Sigma$
-$\delta:$ $(Q ?\big\{q_l\big\})$ $\times$ $(Q?\big\{q_0\big\})$ $\rightarrow R$
+$\delta:$ $(Q -\big\{q_l\big\})$ $\times$ $(Q-\big\{q_0\big\})$ $\rightarrow R$
 4) $q_0 \in Q\ -$ algseisund
 5) $q_l \in Q\ -$ <strong>lõpuseisund</strong>"
 kontekstivaba grammatika;"Nelik $G = (V,T,P,S)$, kus:
@@ -118,9 +118,9 @@ Tuletusreeglid on kujul $X \rightarrow \alpha$, kus $\alpha \in (V \cup T)^*$"
 kontekstivabade grammatikate ekvivalents;"Kontekstivabad grammatikad $G_1$ ja $G_2$ on ekvivalentsed (tähistus $G_1 \equiv G_2$), kui $L(G_1)=L(G_2)$
 
 $L(G)$ on grammatika $G$ poolt genereeritud kontekstivaba keel."
-grammatika mitteoluline sümbol;"Sümbolit nim oluliseks, kui leidub tuletuste jada $S \Longrightarrow aXb \Longrightarrow w$, kus $w ? T^*$ (sõna koosneb terminalidest).
+grammatika mitteoluline sümbol;"Sümbolit nim oluliseks, kui leidub tuletuste jada $S \Longrightarrow aXb \Longrightarrow w$, kus $w \in T^*$ (sõna koosneb terminalidest).
 Vastasel juhul nim sümbolit $X$ mitteoluliseks."
-?-tuletusreegel;"tuletusreegel kujul $A \rightarrow \epsilon$
+$\varepsilon$-tuletusreegel;"tuletusreegel kujul $A \rightarrow \epsilon$
 
 Märkus:
 $A$ - muutuja
@@ -171,7 +171,7 @@ $\epsilon\ -$ tühi sõna
 $\alpha\ -$ magasinis olevate sümbolite jada
 $Q\ -$ lõplik seisundite hulk
 $F\subseteq Q\ -$ lõpuseisundite hulk"
-magasiniga automaadi TÜHJA MAGASINI läbi aktsepteeritav keel;"Hulka $N(M)=$ $\big\{w|(q_0, w, Z_0) \vdash$ $ (p,\epsilon,\epsilon),$ $p \in Q\big\}$ nimetatakse magasiniga automaadi $M$ poolt tühja magasini läbi aktsepteeritavaks keeleks. Kuna viimasel juhul lõpuseisundid tähtsust ei oma, siis võetakse selleks tühi hulk (?).
+magasiniga automaadi TÜHJA MAGASINI läbi aktsepteeritav keel;"Hulka $N(M)=$ $\big\{w|(q_0, w, Z_0) \vdash$ $ (p,\epsilon,\epsilon),$ $p \in Q\big\}$ nimetatakse magasiniga automaadi $M$ poolt tühja magasini läbi aktsepteeritavaks keeleks. Kuna viimasel juhul lõpuseisundid tähtsust ei oma, siis võetakse selleks tühi hulk ($\varnothing$).
 
 $q_0 \in Q\ -$ algseisund
 $w\ -$ sisendsümbolite jada
@@ -183,16 +183,16 @@ $Q\ -$ lõplik seisundite hulk
 $F \subseteq Q\ -$ lõpuseisundite hulk"
 Turingi masin;"Seitsmik $M=$ $(Q,\Gamma,\Sigma,\delta,q_0,B,F)$, kus
 1) $Q\ -$ lõplik seisundite hulk
-2) $\Gamma\ -$ lõplik LINDIsümbolite hulk (eeldame, et $Q\cap\Gamma=$ ?)
-3) $\Sigma ? \Gamma\ -$ lõplik sisendsümbolite hulk
+2) $\Gamma\ -$ lõplik LINDIsümbolite hulk (eeldame, et $Q\cap\Gamma=\varnothing$)
+3) $\Sigma \subset \Gamma\ -$ lõplik sisendsümbolite hulk
 4) $\delta:Q\times\Gamma\to Q\times\Gamma\times\{L,R\}\ -$ üleminekufunktsioon,
 5) $q_0 \in Q\ -$ algseisund
-6) $B \in \Gamma?\Sigma\ -$ tühja lahtri sümbol (blank)
-7) $F ? Q\ -$ lõpuseisundite hulk
+6) $B \in \Gamma - \Sigma\ -$ tühja lahtri sümbol (blank)
+7) $F \subseteq Q\ -$ lõpuseisundite hulk
 
 Märkus:
 $L, R\ -$ seisund liigub vasakule või paremale"
-turingi masina $M$ poolt aktsepteeritav (rekursiivselt loenduv) keel;"Nimetatakse hulka $L(M)=$ $\big\{w|w\in\Sigma^*, q_0w \vdash$ $\alpha_1p\alpha_2, p \in F,$ $?_1, ?_2 \in \Gamma^*\big\}$
+turingi masina $M$ poolt aktsepteeritav (rekursiivselt loenduv) keel;"Nimetatakse hulka $L(M)=$ $\big\{w|w\in\Sigma^*, q_0w \vdash$ $\alpha_1p\alpha_2, p \in F,$ $\alpha_1, \alpha_2 \in \Gamma^*\big\}$
 Keeli, mis aktsepteeritakse Turingi masinate poolt, nimetatakse rekursiivselt loenduvateks.
 Tuletusreeglid on kujul $\alpha \to \beta$, kus $\alpha \neq \epsilon$"
 piiranguteta (e. 0-tüüpi) grammatika;"Grammatika $G=(V,T,P,S)$, mille tuletusreeglid on kujul: $\alpha \to \beta$, kus $\alpha \in\ (V\ \cup\ T)^*V(V\ \cup\ T)^*$, $\alpha \neq \epsilon$:
@@ -209,17 +209,17 @@ lineaarselt tõkestatud automaat;"Mittedeterministlik Turingi masin on lineaarse
 2) Masina pea ei liigu sümbolitega  $\triangleright$ ja $\triangleleft$ määratud piiridest väljapoole ega kirjuta neid sümboleid ka üle."
 kontekstitundlik grammatika;"Grammatikat $G=(V,T,P,S)$ on kontekstitundlik, kui:
 1) tuletusreeglid on kujul $\alpha \rightarrow \beta,$
-2) kus $1 \leq |\alpha| ? |\beta|$,
+2) kus $1 \leq |\alpha| \leq |\beta|$,
 3) sõna $\alpha$ sisaldab vähemat ühte muutujat.
 Kontekstitundliku grammatika poolt <strong>genereeritud</strong> keelt nimetatakse kontekstitundlikuks keeleks."
-turingi masina ajaline keerukus;" Olgu $M$ mingi DETERMINISTLIK Turingi masin. Funktsiooni $t: \mathbb{N} \to \mathbb{N}$ nimetatakse Turingi masina $M$ ajaliseks keerukuseks, kui $M$ teeb mistahes n-tähelise sisendsõna korral enne peatumist ÜLIMALT $t(n)$ ÜLEMINEKUT.
- MITTEdeterministliku Turingi masina korral loetakse tema ajaliseks keerukuseks pikima sammude arvuga haru pikkusega määratud funktsiooni."
+turingi masina ajaline keerukus;"• Olgu $M$ mingi DETERMINISTLIK Turingi masin. Funktsiooni $t: \mathbb{N} \to \mathbb{N}$ nimetatakse Turingi masina $M$ ajaliseks keerukuseks, kui $M$ teeb mistahes n-tähelise sisendsõna korral enne peatumist ÜLIMALT $t(n)$ ÜLEMINEKUT.
+• MITTEdeterministliku Turingi masina korral loetakse tema ajaliseks keerukuseks pikima sammude arvuga haru pikkusega määratud funktsiooni."
 keelte klassi ajalise keerukusega $t(n)$;"Olgu $t: \mathbb{N} \to \mathbb{N}$ mingi funktsioon, siis hulk:
 $TIME(t(n))$=$\big\{\ L$ $|\ L$ $on$ $keel,$ $mille$ $aktsepteerib$ $mingi$ $\big(deterministlik\big)$ $Turingi$ $masin$ $ajalise$ $keerukusega$ $O(t(n))$ $\big\}$."
 keelte klass P;"(polünomiaalse keerukusega)
- Praktikas osutuvad keeled kõikidest klassidest $TIME(n^k)$, suhteliselt mõistliku ajaga aktsepteeritavateks.
- Tähistus: $${\cal P}=\bigcup\limits_{k\geq 1}TIME(n^k).$$
- Sellesse klassi kuuluvad kõik keeled, mida aktsepteerivad ÜHElindilised deterministlikud Turingi masinad POLÜNOMIAALSE ajaga."
+• Praktikas osutuvad keeled kõikidest klassidest $TIME(n^k)$, suhteliselt mõistliku ajaga aktsepteeritavateks.
+• Tähistus: $${\cal P}=\bigcup\limits_{k\geq 1}TIME(n^k).$$
+• Sellesse klassi kuuluvad kõik keeled, mida aktsepteerivad ÜHElindilised deterministlikud Turingi masinad POLÜNOMIAALSE ajaga."
 funktsiooni ülemine tõke;"Olgu $f,\ g:\ \mathbb{N}$ $\to$ $\mathbb{R}^*$ kaks funktsiooni.
 Ütleme, et funktsioon g on funktsiooni f ülemine tõke, ja märgime:
 <code>f(n) = O(g(n))</code>, kui leiduvad konstandid c ja N, nii et <code>f(n) ? cg(n)</code> $\forall\ n\ \geq N$ korral.
@@ -227,7 +227,7 @@ funktsiooni ülemine tõke;"Olgu $f,\ g:\ \mathbb{N}$ $\to$ $\mathbb{R}^*$ kaks 
 Märkus:
 Suure O-ga tähistatakse keerukust."
 Formaalne keel;Formaalne keel $L$ aktsepteeritakse mingi lõpliku mittedeterministliku automaadi poolt parajasti siis kui ta aktsepteeritakse mingi lõpliku deterministliku automaadi poolt.
-Sõnastada teoreem regulaarsete avaldiste ja mittedeterministlike automaatide vastavusest;Kui $r$ on mingi regulaarne avaldis, siis leidub keelt $L(r)$ aktsepteeriv $\epsilon$-üleminekutega mittedeterministlik lõplik automaat.
+Sõnastada teoreem regulaarsete avaldiste ja mittedeterministlike automaatide vastavusest;Kui $r$ on mingi regulaarne avaldis, siis leidub keelt $L(r)$ aktsepteeriv $\epsilon$-üleminekutega mittedeterministlik lõplik automaat.
 Sõnastada teoreem regulaarsete avaldiste ja deterministlike automaatide vastavusest;"Küsimus:
 Mistahes deterministliku lõpliku automaadi poolt aktsepteeritav keel avaldub mingi regulaarse avaldise kaudu.
 
@@ -249,7 +249,7 @@ Iga mittetühi kontekstivaba keel (KVK) genereeritakse mingi vaid olulisi sümbo
 Vastus:
 $\forall$ mittetühi kontekstivaba keel genereeritakse mingi vaid OLULISI sümboleid sisaldava kontekstivaba keel grammatika poolt."
 Iga tühja sõna mittesisaldav KVK...;"Küsimus:
-Iga tühja sõna mittesisaldav KVK genereeritakse mingi ?-tuletusreegleid mittesisaldava kontekstivaba grammatika poolt.
+Iga tühja sõna mittesisaldav KVK genereeritakse mingi ε-tuletusreegleid mittesisaldava kontekstivaba grammatika poolt.
 
 Vastus:
 $\forall$ tühja sõna mittesisaldav kontekstivaba keel defineeritakse mingi vaid olulisi sümboleid sisaldava ilma asendus- ja $\epsilon$-tuletusteta kontekstivaba grammatika poolt."
@@ -262,7 +262,7 @@ Pumping-lemma kontekstivabade keelte jaoks;"Olgu $L$ mingi kontekstivaba keel. S
 3) $uv^iwx^iy \in L$, iga $i \geq 0$ korral"
 Magasiniga automaadi poolt lõpuseisundite läbi ja tühja magasini läbi aktsepteeritavad keelte klassid ühtivad;"Mistahes keele $L$ korral $L = L(M_1)$, kus $M_1$ on mingi magasiniga automaat, parajasti siis, kui $L = N(M_2)$ mingi magasiniga automaadi $M_2$ korral.
 
-Hulka $L(M)=$ $\big\{w|(q_0, w, Z_0) \vdash$ $(p,\epsilon,\alpha), p \in F,$ $? \in \Gamma^*\big\}$ nimetatakse magasiniga automaadi $M$ lõpuseisundite läbi aktsepteeritavaks keeleks
+Hulka $L(M)=$ $\big\{w|(q_0, w, Z_0) \vdash$ $(p,\epsilon,\alpha), p \in F,$ $\alpha \in \Gamma^*\big\}$ nimetatakse magasiniga automaadi $M$ lõpuseisundite läbi aktsepteeritavaks keeleks
 
 Hulka $N(M)=$ $\big\{w|(q_0, w, Z_0) \vdash$ $(p,\epsilon,\epsilon), p \in Q\big\}$ nimetatakse magasiniga automaadi $M$ poolt tühja magasini läbi aktsepteeritavaks keeleks. Kuna viimasel juhul lõpuseisundid tähtsust ei oma, siis võetakse selleks tühi hulk (?).
 

@@ -31,7 +31,9 @@
             <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']"
                    [infiniteScrollDistance]="0">
             <tr *ngFor="let card of cards ;trackBy: trackId">
-                <td>{{card.front}}</td>
+                <td>
+                    <jhi-latex [equation]="card.front"></jhi-latex>
+                </td>
                 <td>
                     <jhi-latex [equation]="card.back"></jhi-latex>
                 </td>
