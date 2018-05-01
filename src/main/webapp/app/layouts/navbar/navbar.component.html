@@ -15,7 +15,7 @@
             <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link" routerLink="/" (click)="collapseNavbar()">
                     <span>
-                        <i class="fa fa-home" aria-hidden="true"></i>
+                        <i class="fa fa-home d-none d-xl-inline" aria-hidden="true"></i>
                         <span jhiTranslate="global.menu.home">Home</span>
                     </span>
                 </a>
@@ -24,7 +24,7 @@
                 [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link" routerLink="card" (click)="collapseNavbar()">
                     <span>
-                        <i class="fa fa-list" aria-hidden="true"></i>
+                        <i class="fa fa-list d-none d-xl-inline" aria-hidden="true"></i>
                         <span jhiTranslate="global.menu.entities.card">Card</span>
                     </span>
                 </a>
@@ -118,7 +118,7 @@
                 <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);"
                    id="languagesnavBarDropdown" *ngIf="languages.length > 1">
                     <span>
-                        <i class="fa fa-flag" aria-hidden="true"></i>
+                        <i class="fa fa-flag d-none d-xl-inline" aria-hidden="true"></i>
                         <span jhiTranslate="global.menu.language">Language</span>
                     </span>
                 </a>
