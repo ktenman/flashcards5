@@ -152,7 +152,7 @@ magasiniga automaat;"Seitsmik $M=$ $(Q, \Sigma, \Gamma, \delta, q_0, Z_0, F)$, m
 2) $\Sigma\ -$ lõplik sisendsümbolite hulk
 3) $\Gamma\ -$ lõplik magasinisümbolite hulk
 4) $\delta\ -$ üleminekufunktsioon on kujutus hulgast lõplike osahulkade hulka
-$\delta:$ $Q \times \big(?? \big\{\epsilon \big\}\big)\times \Gamma$ $\rightarrow Q \times \Gamma^*$
+$\delta:$ $Q \times \big(\Sigma \cup \big\{\epsilon \big\}\big)\times \Gamma$ $\rightarrow Q \times \Gamma^*$
 5) $q_0 \in Q\ -$ algseisund
 6) $Z_0 \in \Gamma\ -$ magasini algussümbol
 7) $F\subseteq Q\ -$ lõpuseisundite hulk
@@ -161,7 +161,7 @@ Magasiniga automaadi tööd kirjeldab kolmik $(q,w,\alpha)$, kus:
 1) $q\ -$ automaadi momendi seisund
 2) $w\ -$ sisendsümbolite jada
 3) $\alpha\ -$ magasinis olevate sümbolite jada"
-magasiniga automaadi LÕPUSEISUNDITE läbi aktsepteeritav keel;"$L(M) = \big\{w|(q_0, w, Z_0) \vdash$ $(p,\epsilon,\alpha), p \in F, ? \in \Gamma^*\big\}$ nimetatakse magasiniga automaadi $M$ lõpuseisundite läbi aktsepteeritavaks keeleks
+magasiniga automaadi LÕPUSEISUNDITE läbi aktsepteeritav keel;"$L(M) = \big\{w|(q_0, w, Z_0) \vdash$ $(p,\epsilon,\alpha), p \in F, \alpha \in \Gamma^*\big\}$ nimetatakse magasiniga automaadi $M$ lõpuseisundite läbi aktsepteeritavaks keeleks
 
 $q_0 \in Q\ -$ algseisund
 $w\ -$ sisendsümbolite jada
@@ -222,7 +222,7 @@ keelte klass P;"(polünomiaalse keerukusega)
 • Sellesse klassi kuuluvad kõik keeled, mida aktsepteerivad ÜHElindilised deterministlikud Turingi masinad POLÜNOMIAALSE ajaga."
 funktsiooni ülemine tõke;"Olgu $f,\ g:\ \mathbb{N}$ $\to$ $\mathbb{R}^*$ kaks funktsiooni.
 Ütleme, et funktsioon g on funktsiooni f ülemine tõke, ja märgime:
-<code>f(n) = O(g(n))</code>, kui leiduvad konstandid c ja N, nii et <code>f(n) ? cg(n)</code> $\forall\ n\ \geq N$ korral.
+<code>f(n) = O(g(n))</code>, kui leiduvad konstandid c ja N, nii et $f(n) \leq cg(n)$ $\forall\ n\ \geq N$ korral.
 
 Märkus:
 Suure O-ga tähistatakse keerukust."
@@ -264,7 +264,7 @@ Magasiniga automaadi poolt lõpuseisundite läbi ja tühja magasini läbi aktsep
 
 Hulka $L(M)=$ $\big\{w|(q_0, w, Z_0) \vdash$ $(p,\epsilon,\alpha), p \in F,$ $\alpha \in \Gamma^*\big\}$ nimetatakse magasiniga automaadi $M$ lõpuseisundite läbi aktsepteeritavaks keeleks
 
-Hulka $N(M)=$ $\big\{w|(q_0, w, Z_0) \vdash$ $(p,\epsilon,\epsilon), p \in Q\big\}$ nimetatakse magasiniga automaadi $M$ poolt tühja magasini läbi aktsepteeritavaks keeleks. Kuna viimasel juhul lõpuseisundid tähtsust ei oma, siis võetakse selleks tühi hulk (?).
+Hulka $N(M)=$ $\big\{w|(q_0, w, Z_0) \vdash$ $(p,\epsilon,\epsilon), p \in Q\big\}$ nimetatakse magasiniga automaadi $M$ poolt tühja magasini läbi aktsepteeritavaks keeleks. Kuna viimasel juhul lõpuseisundid tähtsust ei oma, siis võetakse selleks tühi hulk ($\varnothing$).
 
 Märkus:
 $q_0 \in Q\ -$ algseisund
