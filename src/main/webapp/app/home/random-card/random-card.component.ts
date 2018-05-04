@@ -52,9 +52,7 @@ export class JhiRandomCardComponent implements OnInit {
                     this.cachedNextCard = cardResponse.body
                     if (this.cachedNextCard.id === this.card.id && this.tries < 10) {
                         this.tries++
-                        if (this.tries === 10) {
-                            this.lastCard = true
-                        }
+                        this.lastCard = this.tries === 10
                         this.cacheNextCard()
                     } else {
                         this.tries = 0
