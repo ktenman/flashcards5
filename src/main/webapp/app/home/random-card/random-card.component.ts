@@ -78,7 +78,7 @@ export class JhiRandomCardComponent implements OnInit {
     }
 
     @HostListener('document:keyup', ['$event'])
-    private buttons(event) {
+    buttons(event) {
         switch (event.which) {
             case 13: // enter
             case 38: // up
