@@ -11,7 +11,7 @@ import {
     JhiAutosizeDirective,
     JhiLatexComponent,
     JhiLoginModalComponent,
-    JhiReplaceLineBreaksPipe,
+    JhiReplaceLineBreaksAndAsterisksPipe,
     JhiSocialComponent,
     LoginModalService,
     LoginService,
@@ -34,7 +34,7 @@ import {KatexModule} from 'ng-katex'
         HasAnyAuthorityDirective,
         JhiLatexComponent,
         JhiAutosizeDirective,
-        JhiReplaceLineBreaksPipe
+        JhiReplaceLineBreaksAndAsterisksPipe
     ],
     providers: [
         LoginService,

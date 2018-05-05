@@ -32,12 +32,12 @@ ekvivalentsiseose indeks;Mistahes ekvivalentsiseose $\rho$ <strong>ekvivalentsik
 suunatud (mittesuunatud) graaf;"Graaf koosneb tippudest ja neid ühendatavatest servadest $G = (V,E)$, kus $V$ (tipud) on MITTETÜHI hulk ning $E$ (servad) hulk, mille elementideks on hulga $V$ KAHEELEMENDILISED alamhulgad
 
 suunatud (orienteeritud) graaf:
-• kõik servad on orienteeritud
-• $V$ elemendid on kujutatud punktidena ning $E$ elementide vastavaid punkte ühendavate nooltena
+* kõik servad on orienteeritud
+* $V$ elemendid on kujutatud punktidena ning $E$ elementide vastavaid punkte ühendavate nooltena
 
 mittesuunatud (orienteerimata) graaf:
-• graaf, mille kõik servad on orienteerimata (serva jaoks tippude järjekord on ebaoluline)
-• kui binaarne seos $E$ on sümmeetriline, siis noolte asemel jooned"
+* graaf, mille kõik servad on orienteerimata (serva jaoks tippude järjekord on ebaoluline)
+* kui binaarne seos $E$ on sümmeetriline, siis noolte asemel jooned"
 alamgraaf;Graafi $G=(V,E)$ alamgraafiks nimetatakse graafi $G'=(V',E')$, mis on saadud graafist $G=(V,E)$ teatava hulga tippude ja servade kustutamisel või, kui $V'\subseteq V$ ja $E'\subseteq E\cap(V'\times V)$
 sidus graaf;"1) Sidusas graafis saab IGAST tipust mööda servi liikuda igasse TEISE tippu.
 2) Mittesuunatud graaf, mida ei saa esitada KAHE ALAMGRAAFI LÕIKUMATU ühendina."
@@ -212,14 +212,14 @@ kontekstitundlik grammatika;"Grammatikat $G=(V,T,P,S)$ on kontekstitundlik, kui:
 2) kus $1 \leq |\alpha| \leq |\beta|$,
 3) sõna $\alpha$ sisaldab vähemat ühte muutujat.
 Kontekstitundliku grammatika poolt <strong>genereeritud</strong> keelt nimetatakse kontekstitundlikuks keeleks."
-turingi masina ajaline keerukus;"• Olgu $M$ mingi DETERMINISTLIK Turingi masin. Funktsiooni $t: \mathbb{N} \to \mathbb{N}$ nimetatakse Turingi masina $M$ ajaliseks keerukuseks, kui $M$ teeb mistahes n-tähelise sisendsõna korral enne peatumist ÜLIMALT $t(n)$ ÜLEMINEKUT.
-• MITTEdeterministliku Turingi masina korral loetakse tema ajaliseks keerukuseks pikima sammude arvuga haru pikkusega määratud funktsiooni."
+turingi masina ajaline keerukus;"* Olgu $M$ mingi DETERMINISTLIK Turingi masin. Funktsiooni $t: \mathbb{N} \to \mathbb{N}$ nimetatakse Turingi masina $M$ ajaliseks keerukuseks, kui $M$ teeb mistahes n-tähelise sisendsõna korral enne peatumist ÜLIMALT $t(n)$ ÜLEMINEKUT.
+* MITTEdeterministliku Turingi masina korral loetakse tema ajaliseks keerukuseks pikima sammude arvuga haru pikkusega määratud funktsiooni."
 keelte klassi ajalise keerukusega $t(n)$;"Olgu $t: \mathbb{N} \to \mathbb{N}$ mingi funktsioon, siis hulk:
 $TIME(t(n))$=$\big\{\ L$ $|\ L$ $on$ $keel,$ $mille$ $aktsepteerib$ $mingi$ $\big(deterministlik\big)$ $Turingi$ $masin$ $ajalise$ $keerukusega$ $O(t(n))$ $\big\}$."
 keelte klass P;"(polünomiaalse keerukusega)
-• Praktikas osutuvad keeled kõikidest klassidest $TIME(n^k)$, suhteliselt mõistliku ajaga aktsepteeritavateks.
-• Tähistus: $${\cal P}=\bigcup\limits_{k\geq 1}TIME(n^k).$$
-• Sellesse klassi kuuluvad kõik keeled, mida aktsepteerivad ÜHElindilised deterministlikud Turingi masinad POLÜNOMIAALSE ajaga."
+* Praktikas osutuvad keeled kõikidest klassidest $TIME(n^k)$, suhteliselt mõistliku ajaga aktsepteeritavateks.
+* Tähistus: $${\cal P}=\bigcup\limits_{k\geq 1}TIME(n^k).$$
+* Sellesse klassi kuuluvad kõik keeled, mida aktsepteerivad ÜHElindilised deterministlikud Turingi masinad POLÜNOMIAALSE ajaga."
 funktsiooni ülemine tõke;"Olgu $f,\ g:\ \mathbb{N}$ $\to$ $\mathbb{R}^*$ kaks funktsiooni.
 Ütleme, et funktsioon g on funktsiooni f ülemine tõke, ja märgime:
 <code>f(n) = O(g(n))</code>, kui leiduvad konstandid c ja N, nii et $f(n) \leq cg(n)$ $\forall\ n\ \geq N$ korral.
