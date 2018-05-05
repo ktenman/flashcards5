@@ -77,8 +77,8 @@ export class JhiRandomCardComponent implements OnInit {
             (res: HttpErrorResponse) => this.onError(res.message))
     }
 
-    @HostListener('window:keydown', ['$event'])
-    buttons(event) {
+    @HostListener('document:keyup', ['$event'])
+    private buttons(event) {
         switch (event.which) {
             case 13: // enter
             case 38: // up
