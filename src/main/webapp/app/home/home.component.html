@@ -6,32 +6,56 @@
                 <jhi-random-card></jhi-random-card>
             </div>
 
-            <div class="d-none d-xl-block">
-                <div class="row" *ngSwitchCase="false">
-                    <div class="col-md-5"></div>
-                    <div class="col-md-2">
-                        <h3 jhiTranslate="login.title">Sign in</h3>
-                        <jhi-social provider="google"></jhi-social>
-                        <button type="submit" disabled class="btn btn-block jh-btn-social jh-btn-facebook">
-                            <span>Facebook</span>
-                        </button>
-                    </div>
-                    <div class="col-md-5">
+            <div *ngSwitchCase="false">
+                <div class="d-none d-md-block">
+                    <div class="row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-2">
+                            <h3 jhiTranslate="login.title">Sign in</h3>
+                            <jhi-social provider="google"></jhi-social>
+                            <button type="submit" disabled class="btn btn-block jh-btn-social jh-btn-facebook">
+                                <span>Facebook</span>
+                            </button>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="row">
+                                <div class="col-md-2"></div>
+                                <div class="col-md-10">
+                                    <h3>Why Flashcards Help Us Learn?</h3>
+                                    <p>
+                                    <ul>
+                                        <li>
+                                            Active recall has been proven to create stronger neuron connections for that
+                                            memory trace.
+                                        </li>
+                                        <li>
+                                            Research shows that applying metacognition tends to ingrain memories deeper
+                                            into your knowledge.
+                                        </li>
+                                        <li>
+                                            Flashcards allow for confidence-based repetition which is is proven by
+                                            decades of research to be the most scientifically optimized way to improve
+                                            memory performance.
+                                        </li>
+                                    </ul>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="d-xl-none d-xs-block">
-                <div class="row" *ngSwitchCase="false">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4 m-4">
-                        <h4 jhiTranslate="login.title">Sign in</h4>
-                        <jhi-social provider="google"></jhi-social>
-                        <button type="submit" disabled class="btn btn-block jh-btn-social jh-btn-facebook">
-                            <span>Facebook</span>
-                        </button>
-                    </div>
-                    <div class="col-md-4">
+                <div class="d-md-none d-xs-block">
+                    <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4 m-4">
+                            <h4 jhiTranslate="login.title">Sign in</h4>
+                            <jhi-social provider="google"></jhi-social>
+                            <button type="submit" disabled class="btn btn-block jh-btn-social jh-btn-facebook">
+                                <span>Facebook</span>
+                            </button>
+                        </div>
+                        <div class="col-md-4">
+                        </div>
                     </div>
                 </div>
             </div>
