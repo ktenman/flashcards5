@@ -69,7 +69,9 @@ export class CardDialogComponent implements OnInit {
     }
 
     private onSaveSuccess(result: Card) {
+        // TODO refactor this code
         this.eventManager.broadcast({name: 'cardListModification', content: 'OK'})
+        this.eventManager.broadcast({name: 'cardModification', content: result})
         this.isSaving = false
         this.activeModal.dismiss(result)
     }
