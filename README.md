@@ -1,4 +1,5 @@
-# flashcards
+[![Build Status](https://travis-ci.com/ktenman/flashcards5.svg?branch=master)](https://travis-ci.com/ktenman/flashcards5)
+# flashcards 
 This application was generated using JHipster 4.14.3, you can find documentation and help at [http://www.jhipster.tech/documentation-archive/v4.14.3](http://www.jhipster.tech/documentation-archive/v4.14.3).
 
 ## Install and run in production
