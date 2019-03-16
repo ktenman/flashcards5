@@ -1,7 +1,7 @@
 # Prepare
 sudo true
 sudo apt-get update && apt-get upgrade -y -f
-sudo apt-get install htop maven default-jdk git nodejs npm build-essential -y -f
+sudo apt-get install htop maven openjdk-8-jre-headless git nodejs npm build-essential -y -f
 
 # Install docker and docker-compose
 # Alternatively you can use the official docker install script
